@@ -1,0 +1,3 @@
+INDEX VERSION 1.131
+file:/C:/Users/Henrique/Desktop/Nova%20pasta%20(2)/ProjetoIndividual/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
+meta_index

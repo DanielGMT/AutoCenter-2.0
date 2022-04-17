@@ -1,0 +1,127 @@
+<script type="text/javascript" src="autor/js/autor.js"></script>
+
+
+<div id="cadastrarAutor">
+	<p>
+		<button class="btn btn-primary" id="downButton" type="button"
+			data-toggle="collapse" data-target="#collapseExample"
+			aria-expanded="false" aria-controls="collapseExample">
+			Cadastrar Novo Serviço <span class="caret"></span>
+		</button>
+	</p>
+</div>
+<div class="collapse" id="collapseExample">
+	<form>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Serviço *</label> <input
+				class="form-control" id="inputname" placeholder="Descrição">
+					<label class="control-label" for="nome">Marca *</label>
+				<select class="form-control" name="marca" id="inputmarca" autocomplete="off" 
+				minlength="3" maxlength="25" maxlength="25">
+				<option value="Abarth">Abarth</option>
+				<option value="Alfa Romeo">Alfa Romeo</option>
+				<option value="Alpine">Alpine</option>
+				<option value="Aston Martin">Aston Martin</option>
+				<option value="Audi">Audi</option>
+				<option value="Bentley">Bentley</option>
+				<option value="BMW">BMW</option>
+				<option value="Citroën">Citroën</option>
+				<option value="Chevrolet">Chevrolet</option>
+				<option value="Cupra">Cupra</option>
+				<option value="Dacia">Dacia</option>
+				<option value="DS">DS</option>
+				<option value="Ferrari">Ferrari</option>
+				<option value="Fiat">Fiat</option>
+				<option value="Ford">Ford</option>
+				<option value="Hafei">Hafei</option>
+				<option value="Honda">Honda</option>
+				<option value="Hyundai">Hyundai</option>
+				<option value="Jaguar">Jaguar</option>
+				<option value="JEEP">JEEP</option>
+				<option value="KIA">KIA</option>
+				<option value="Lamborghini">Lamborghini</option>
+				<option value="Land Rover">Land Rover</option>
+				<option value="Lexus">Lexus</option>
+				<option value="Lifan">Lifan</option>
+				<option value="Maserati">Maserati</option>
+				<option value="Mazda">Mazda</option>
+				<option value="Mercedes-Benz">Mercedes-Benz</option>
+				<option value="MG">MG</option>
+				<option value="MINI">MINI</option>
+				<option value="Mitsubishi">Mitsubishi</option>
+				<option value="Nissan">Nissan</option>
+				<option value="Opel">Opel</option>
+				<option value="Peugeot">Peugeot</option>
+				<option value="Porsche">Porsche</option>
+				<option value="Renault">Renault</option>
+				<option value="SEAT">SEAT</option>
+				<option value="Skoda">Skoda</option>
+				<option value="Smart">Smart</option>
+				<option value="Suzuki">Suzuki</option>	
+				<option value="Subaru">Subaru</option>
+				<option value="TESLA">TESLA</option>
+				<option value="Toyota">Toyota</option>
+				<option value="Volkswagen">Volkswagen</option>
+				<option value="Volvo">Volvo</option>
+			</select>
+		<label for="exampleInputEmail1">Modelo</label> <input
+				class="form-control" id="inputmodelo">	
+		
+		<label for="placa">Placa</label> <input
+				class="form-control" id="inputname" placeholder="Não obrigatório">
+		<label for="valor">Valor *</label> <input
+				class="form-control" type="text" id="inputvalor">
+				<br><br>
+		<div id="entrar">
+			<button type="button" id="add-new"
+				onclick="SENAI.biblioteca.cadastrarServico()" class="btn btn-primary">Registrar</button>
+		</div>
+	</form>
+</div>
+</div>
+<div class="table-wrapper">
+	<div class="col-md-12">
+		<h2 class="pt-3 pb-4 text-center font-bold font-up deep-purple-text">Serviços
+			Registrados</h2>
+		<div id="divBusca">
+			<input type="text" class='form-control' id="searchBar" placeholder="Buscar por nome de serviço..." />
+			<button id="searchButton" OnClick="SENAI.biblioteca.buscarAutor()">Buscar</button>
+		</div>
+	</div>
+	<div class="resultadoAutores"></div>
+<ul class="pagination">
+    <li class="page-item">
+      <a class="first" href="#"><<</a>
+    </li>
+    <li class="page-item">
+      <a class="prev" href="#"><</a>
+    </li>
+   <li class="numbers">
+   
+   </li>
+    <li class="page-item">
+      <a class="next" href="#">></a>
+    </li>
+    <li class="page-item">
+      <a class="last" href="#">>></a>
+    </li>
+  </ul>
+	<div class="clearfix">
+		<div class="hint-text"></div>
+		
+	</div>
+</div>
+<div id="editarServico" style="display: none">
+	<label>Serviço:</label> <input id="servicoEdit" class='form-control' name="servico" type="text">
+	<input name="idServico" id="idAutorEdit" type="hidden">
+	<label>Marca:</label> <input id="marcaEdit" class='form-control' name="marca" type="text">
+	<input name="idMarca" id="idMarcaEdit" type="hidden">
+	<label>Modelo:</label> <input id="modeloEdit" class='form-control' name="modelo" type="text">
+	<input name="idModelo" id="idModeloEdit" type="hidden">
+	<label>Placa:</label> <input id="placaEdit" class='form-control' name="placa" type="text">
+	<input name="idPlaca" id="idPlacaEdit" type="hidden">
+	<label>Valor:</label> <input id="valorEdit" class='form-control' name="valor" type="text">
+	<input name="idValor" id="idValorEdit" type="hidden">
+</div>
+
+<div id="msg" style="display: none"></div>

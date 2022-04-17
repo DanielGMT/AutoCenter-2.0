@@ -1,0 +1,33 @@
+package br.com.BibliotecaRest.objetos;
+
+import java.io.Serializable;
+
+public class Servico implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+
+	private int id;
+	private String servico;
+	private String marca;
+	private String modelo;
+	private float valor;
+	private int metodo;
+	
+	public int getId(){
+		return id;
+	}
+	
+	public void setId(int id){
+		this.id = id;
+	}
+	
+	public String getNome(){
+		return nome;
+	}
+	
+	public void setNome(String nome){
+		this.nome = nome;
+	}
+	
+	
+}

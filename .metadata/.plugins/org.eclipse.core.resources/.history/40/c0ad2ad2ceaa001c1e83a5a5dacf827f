@@ -1,0 +1,688 @@
+SENAI.biblioteca = new Object();
+
+$(document)
+		.ready(
+				function() {
+					SENAI.biblioteca.cadastrarServico = function() {
+
+						var novoServico = new Object();
+						for(i = 0; i < linhas; i++){
+							var conc = [];
+							conc[i] = document.getElementById("item"+(i+1));
+							var konk = [];
+							konk[i] = document.getElementById("servico"+(i+1));
+											var qtd = document.getElementById("quantidade"+(i+1));			
+							
+								outrasoma += " ("+(qtd.value)+"x " + new String(konk[i].value)+")";
+							
+							
+							
+								if(parseFloat(conc[i].value)>=0.01){
+										
+													var doc = qtd.value;
+													
+														soma += parseFloat(conc[i].value*doc);
+													
+									}
+							}
+						
+				
+							document.getElementById("inputvalor").value = soma;
+							soma = 0;
+						novoServico.servico = outrasoma; 
+						outrasoma = "";
+						novoServico.marca = $("#inputmarca").val();
+						novoServico.modelo = $("#inputmodelo").val();
+						novoServico.placa = $("#inputplaca").val();
+						novoServico.valor = $("#inputvalor").val();
+						novoServico.metodo = $("#inputmetodo").val();
+						
+						novoServico.data = $("#inputdata").val();
+						
+
+						
+						
+						document.getElementById("downButton").click();
+
+						var cfgajax = {
+							url : "../../rest/bibliotecaRest/addServico",
+							data : novoServico,
+
+							success : function(msg) {
+								var cfg = {
+									title : "Mensagem",
+									height : 250,
+									width : 400,
+									modal : true,
+									buttons : {
+										"OK" : function() {
+											$(this).dialog("close");
+										}
+									}
+								};
+								$("#msg").html(msg);
+								$("#msg").dialog(cfg);
+
+								SENAI.biblioteca.buscarServico();
+							},
+
+							error : function(err) {
+								alert("Erro ao cadastrar um novo serviço!"
+										+ err.responseText);
+							}
+
+						};
+
+						SENAI.ajax.post(cfgajax);
+						
+						
+					};
+
+					var totalglobal = 0;
+					
+						
+					SENAI.biblioteca.buscarServico = function() {
+						var valorBusca = $("#searchBar").val();
+						SENAI.biblioteca.exibirServicos(undefined, valorBusca);
+					};
+
+					$(function() {
+   						$("#inputvalor").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+
+  					});	
+					SENAI.biblioteca.exibirServicos = function(listaDeServicos,
+							valorBusca) {
+								totalglobal = 0;
+						var search = document.getElementById("searchBar");
+						search.addEventListener("keyup", function(event) {
+						  if (event.keyCode === 13) {
+						   event.preventDefault();
+						   document.getElementById("searchButton").click();
+						  }
+						});
+						var html = "<table class='table table-bordered'>";
+						html += "<tr><th>Serviço</th><th>Marca</th><th>Modelo</th><th>Placa</th><th>Valor</th><th>Método</th><th id='acao'>Ações</th></tr>";
+						if (listaDeServicos != undefined
+								&& listaDeServicos.length > 0) {
+							
+							let perPage = 12
+							const state = {
+							  page: 1,
+							  perPage,
+							  
+							  totalPage: Math.ceil(listaDeServicos.length / perPage),
+							  maxVisibleButtons: 5
+							}
+						 
+						 const html = {
+									get(element){
+										return document.querySelector(element)
+									}
+							}
+
+							
+
+							
+						
+							
+							const controls = {
+							  next(){
+							    state.page++
+							   
+							    const lastPage = state.page > state.totalPage
+							    if(lastPage) {
+							    	state.page--
+							    }
+							  },
+							  prev(){
+								  state.page--
+								  if(state.page < 1){
+									  state.page++
+								  }
+							  },
+							  goTo(page){
+								 state.page = +page
+							   },
+							
+							  createListeners() {
+								 
+								  
+								  html.get('.next').addEventListener('click', () => {
+									  controls.next()
+									  update()
+								  })
+								  
+								  html.get('.prev').addEventListener('click', () => {
+									  controls.prev()
+									  update()
+								  })
+								  
+								 html.get('.last').addEventListener('click', () => {
+									  controls.goTo(state.totalPage)
+									  update()
+								  })
+								   
+								  html.get('.first').addEventListener('click', () => {
+									  controls.goTo(1)
+									  update()
+								  })}
+								 
+							  
+							}
+							
+							var str1 = "";
+	
+							var n = "";
+							var date = new Date();
+							var str2 = new Date();
+							var dd = String(str2.getDate()).padStart(2, '0');
+							var mm = String(str2.getMonth() + 1).padStart(2, '0'); //January is 0!
+							var yyyy = str2.getFullYear();
+							
+							str2 = dd + "/" + mm + "/" + yyyy;
+						 var msg = "";
+							const list = {
+									
+									create(item){
+										var tr = document.createElement('tr')
+										
+										totalglobal += item.valor;
+										
+										document.getElementById("totalglobal").value = "R$ "+totalglobal;
+										tr.innerHTML += "<td>"
+											+ item.servico
+											+ "</td>"
+											+"<td>"
+											+ item.marca
+											+ "</td>"
+											+"<td>"
+											+ item.modelo
+											+ "</td>"
+											+"<td>"
+											+ item.placa
+											+ "</td>"
+											+"<td>"
+											+ "R$ "+item.valor
+											+ "</td>";
+											
+											if(item.metodo == 1){
+												tr.innerHTML += "<td>Dinheiro</td>";
+											}else if(item.metodo == 2){
+												tr.innerHTML += "<td>Cartão Débito</td>";
+											}else if(item.metodo == 3){
+												tr.innerHTML += "<td>Cartão Crébito</td>";
+											}else{
+												tr.innerHTML += "<td>Pix</td>";
+											}
+											
+											tr.innerHTML += "<td><a class = 'edit' onclick = 'SENAI.biblioteca.editarServico("
+											+ item.id
+											+ "); '>"
+											+ "<i class='glyphicon glyphicon-pencil'></i></a>"
+											+ "<a class = 'delete' onclick = 'SENAI.biblioteca.deletarServico("
+											+ item.id
+											+ ")'>"
+											+ "<i class='glyphicon glyphicon-trash'></i></a></td>";		
+										
+										html.get('.fleinin').appendChild(tr);
+										
+		
+							},
+							createTable(){
+								const table = document.createElement('table')
+								table.classList.add('table')
+								table.classList.add('table-bordered')
+								
+								table.innerHTML += "<tbody class ='fleinin'><tr><th>Serviço</th><th>Marca</th><th>Modelo</th><th>Placa</th><th>Valor</th><th>Método de P.</th><th>Ações</th></tr>"
+								+ "</tbody>";
+								html.get('.resultadoServicos').appendChild(table);
+							},
+							update(){
+								 
+								 html.get('.resultadoServicos').innerHTML = ""
+									 list.createTable()
+								let page = state.page - 1
+								let start = page * state.perPage
+								let end = start + state.perPage
+								const paginatedItems = listaDeServicos.slice(start, end)
+								
+								paginatedItems.forEach(list.create);
+							 }
+							 
+					 	}
+						
+						
+						
+						const buttons = {
+								element: html.get('.pagination .numbers'),
+								create(number) {
+									const button = document.createElement('a')
+									
+									button.innerHTML = number;
+									
+									if(state.page == number){
+										button.classList.add('active')
+									}
+									
+									button.addEventListener('click', (event) => {
+										const page = event.target.innerText
+										
+										controls.goTo(page)
+										update()
+									})
+									
+									buttons.element.appendChild(button)
+								},
+								update() {
+									buttons.element.innerHTML = ""
+										const {maxLeft, maxRight} = buttons.calculateMaxVisible()
+										
+										
+										for(let page = maxLeft; page<=maxRight; page++){
+											buttons.create(page)
+										}
+								},
+								calculateMaxVisible(){
+									const { maxVisibleButtons } = state
+									let maxLeft = (state.page - Math.floor(maxVisibleButtons / 2))
+									let maxRight = (state.page + Math.floor(maxVisibleButtons / 2))
+								 if(maxLeft < 1){
+									 maxLeft = 1
+									 maxRight = maxVisibleButtons
+								 }
+									if(maxRight > state.totalPage){
+										maxLeft = state.totalPage - (maxVisibleButtons - 1)
+										maxRight = state.totalPage
+										
+										if(maxLeft < 1){
+											maxLeft = 1
+										}
+									}
+									
+									return {maxLeft, maxRight}
+								}
+						}
+						
+						function update() {
+							list.update()
+					 		buttons.update()
+					 	}
+					 
+					 	function init(){
+					 		update()
+					 		controls.createListeners()
+					 	}
+					 	
+					 	init();
+							
+						
+						} else {
+							if (listaDeServicos == undefined) {
+								if (valorBusca == "") {
+									valorBusca = null;
+								}
+								var cfg = {
+									type : "POST",
+									url : "../../rest/bibliotecaRest/buscarServicosPorNome/"
+											+ valorBusca,
+									success : function(listaDeServicos) {
+										SENAI.biblioteca
+												.exibirServicos(listaDeServicos);
+									},
+									error : function(err) {
+										alert("Erro ao consultar os Servicos: "
+												+ err.responseText);
+									}
+								};
+
+								SENAI.ajax.post(cfg);
+							} else {
+								const html = {
+										get(element){
+											return document.querySelector(element)
+										}
+								}
+								html.get('.resultadoServicos').innerHTML = "<span><label><font color='red'> Nenhum registro encontrado. </font></label></span>";
+						
+							}
+						}
+						
+					};
+					
+					var count = 1;
+					var valor = parseFloat(0);
+					var testando = "";			
+					
+					SENAI.biblioteca.tirarServico = function(){
+						
+						const html = {
+										get(element){
+											return document.querySelector(element)
+										}
+								}
+						
+						var teste = document.getElementById("lugarzinho");
+						teste.removeChild(teste.lastChild);
+						
+						
+						linhas = linhas - 1;
+						for(i = 0; i < linhas; i++){
+							var conc = [];
+							conc[i] = document.getElementById("item"+(i+1));
+							
+							if(parseFloat(conc[i].value)>=0.01){
+								soma -= parseFloat(conc[i].value);
+							}
+							
+							
+						}
+				
+							document.getElementById("inputvalor").value = "R$ "+soma;
+						
+							
+						soma = 0;
+					
+						count = 1;
+							
+					}
+					
+					 var linhas = 0;
+					 var date = new Date();
+						var str2 = new Date();
+						var dd = String(str2.getDate()).padStart(2, '0');
+						var mm = String(str2.getMonth() + 1).padStart(2, '0'); //January is 0!
+						var yyyy = String(str2.getFullYear());
+
+						str2 = dd + "/" + mm + "/" + yyyy;
+						
+					
+					SENAI.biblioteca.acrescentarServico = function(){
+						document.getElementById("inputdata").value = str2;
+						
+						for(i = 0; i < linhas; i++){
+							var conc = [];
+							conc[i] = document.getElementById("item"+(i+1));
+							
+							if(parseFloat(conc[i].value)>=0.01){
+								var qtd = document.getElementById("quantidade"+(i+1));
+											var doc = qtd.value;
+											
+												soma += parseFloat(conc[i].value*doc);
+											
+							}
+							
+							
+						}
+				
+							document.getElementById("inputvalor").value = "R$ "+soma;
+						
+							
+						soma = 0;
+					
+						
+						testando = "";
+							
+						
+						var text = "";
+
+								const html = {
+										get(element){
+											return document.querySelector(element)
+										}
+								}					
+
+						linhas += 1;
+							
+							
+							
+							var div = document.getElementById("lugarzinho");
+						
+						var divtest = document.createElement("div")
+						
+						divtest.innerHTML = "Item"+linhas+"<div><select id='servico"+(linhas)+"' autocomplete='off'><option value='Venda de pneu 13'>Venda de pneu 13</option><option value='Venda de pneu 14'>Venda de pneu 14</option><option value='Venda de pneu 15'>Venda de pneu 15</option><option value='Venda de pneu 16'>Venda de pneu 16</option><option value='Venda de pneu 17'>Venda de pneu 17</option><option value='Venda de pneu 18'>Venda de pneu 18</option><option value='Venda de pneu 19'>Venda de pneu 19</option><option value='Venda de pneu 20'>Venda de pneu 20</option><option value='Venda de roda'>Venda de roda</option><option value='Refil'>Refil</option><option value='Remendo frio'>Remendo frio</option><option value='Remendo quente'>Remendo quente</option><option value='Vulcanizo'>Vulcanizo</option><option value='Conserto de roda'>Conserto de roda</option><option value='Vedação'>Vedação</option><option value='Troca de bico'>Troca de bico</option></select>"
+				+ "<select onChange='SENAI.biblioteca.selectQnt(this)' name='quantidade' id='quantidade"+linhas+"' autocomplete='off'"
+				+ "minlength='3' maxlength='25' maxlength='25'><option value='1'>x1</option><option value='2'>x2</option><option value='3'>x3</option><option value='4'>x4</option><option value='5'>x5</option><option value='6'>x6</option><option value='7'>x7</option><option value='x8'>8</option><option value='9'>x9</option><option value='10'>x10</option></select><input class='form-control' id='item"+linhas+"' onblur= 'SENAI.biblioteca.blur(this)' autocomplete='off' placeholder='Valor'><textarea class='form-control' id='observacao"+(linhas)+"' row='10' cols='20' autocomplete='off' placeholder='Observação'></textarea><label class='control-label' for='marca'></label></div>";
+
+						
+							div.appendChild(divtest);
+							
+							if(linhas>0){
+								
+								
+								for(i = 0; i < linhas; i++){
+									var conc = [];
+									conc[i] = document.getElementById("item"+(i+1));
+							
+									if(parseFloat(conc[i].value)>=0.01){
+											var qtd = document.getElementById("quantidade"+(i+1));
+											var doc = qtd.value;
+											
+												soma += parseFloat(conc[i].value*doc);
+											
+											
+										
+									}
+																$("#item"+(i+1)).maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+
+							}
+							document.getElementById("inputvalor").value = "R$ "+soma;
+							}
+							
+							
+							
+					}
+					
+					var soma = 0;
+					var outrasoma = "";
+					
+					SENAI.biblioteca.selectQnt = function(valor){
+						for(i = 0; i < linhas; i++){
+							var conc = [];
+							conc[i] = document.getElementById("item"+(i+1));
+							
+							if(parseFloat(conc[i].value)>=0.01){
+								
+								var qtd = document.getElementById("quantidade"+(i+1));
+								
+								var doc = qtd.value;
+								
+									soma += (conc[i].value*doc);
+								
+								
+							}
+							
+							
+						}
+						document.getElementById("inputvalor").value = "R$ "+soma;
+						soma = 0;
+						
+					}
+					
+					SENAI.biblioteca.blur = function(valor){
+						
+						
+						
+						soma = 0;
+						var atual = valor.value;			
+						var cur_re = /\D*(\d+|\d.*?\d)(?:\D+(\d{2}))?\D*$/;
+						var parts = cur_re.exec(atual);
+						var number = parseFloat(parts[1].replace(/\D/,'')+'.'+(parts[2]?parts[2]:'00'));
+						valor.value = (number.toFixed(2));
+							
+							
+			
+						for(i = 0; i < linhas; i++){
+							var conc = [];
+							conc[i] = document.getElementById("item"+(i+1));
+							
+							if(parseFloat(conc[i].value)>=0.01){
+								
+								var qtd = document.getElementById("quantidade"+(i+1));
+								
+								var doc = qtd.value;
+								
+									soma += parseFloat(conc[i].value*doc);
+								
+								
+							}
+							
+							
+						}
+				
+							document.getElementById("inputvalor").value = "R$ "+soma;
+							
+							soma = 0;
+					}
+					
+					
+
+					SENAI.biblioteca.exibirServicos(undefined, "");
+
+					SENAI.biblioteca.deletarServico = function(id) {
+						msg = "Tem certeza que deseja excluir este serviço?"
+							var cfg = {
+									title : "Mensagem",
+									height : 250,
+									width : 400,
+									modal : true,
+									buttons : {
+										"Não" : function() {
+											$(this).dialog("close");
+										},
+										"Sim" : function(){
+											var cfg = {
+												type : "POST",
+												url : "../../rest/bibliotecaRest/deletarServico/"
+														+ id,
+												success : function(msg) {
+													var qtLinhas = $("#resultadoServicos tr").length;
+													$(this).parents("tr").remove();
+													$("#add-new").removeAttr("disabled");
+													var cfg = {
+														title : "Mensagem",
+														height : 250,
+														width : 400,
+														modal : true,
+														buttons : {
+															"OK" : function() {
+																$(this).dialog("close");
+															}
+														}
+													};
+					
+													$("#msg").html(msg);
+													$("#msg").dialog(cfg);
+					
+													SENAI.biblioteca.buscarServico();
+												},
+												error : function(err) {
+													alert("Erro: "
+															+ err.responseText);
+												}
+											};
+											SENAI.ajax.post(cfg);
+										}
+									}
+								};
+						$("#msg").html(msg);
+						$("#msg").dialog(cfg);
+					}
+
+					SENAI.biblioteca.editarServico = function(id) {
+						var cfg = {
+							type : "POST",
+							url : "../../rest/bibliotecaRest/buscarServicoPeloId/"
+									+ id,
+							success : function(servico) {
+								
+								$("#idServicoEdit").val(servico.id);
+								$("#servicoEdit").val(servico.servico);
+								$("#marcaEdit").val(servico.marca);
+								$("#modeloEdit").val(servico.modelo);
+								$("#placaEdit").val(servico.placa);
+								$("#valorEdit").val(servico.valor);
+								$("#metodoEdit").val(servico.metodo);
+								SENAI.biblioteca.exibirEdicao(servico);
+							},
+							error : function(err) {
+								alert("Erro ao editar o serviço!"
+										+ err.responseText);
+							}
+						};
+						SENAI.ajax.post(cfg);
+					};
+					
+
+					SENAI.biblioteca.exibirEdicao = function(servico) {
+						var cfg = {
+							title : "Editar Serviço",
+							height : 490,
+							width : 750,
+							modal : true,
+							buttons : {
+								"Cancelar" : function() {
+									$(this).dialog("close");
+								},
+
+								"Salvar" : function() {
+									var dialog = this;
+									var servico = new Object();
+									servico.id = $("#idServicoEdit").val();
+									servico.servico = $("#servicoEdit").val();
+									servico.marca = $("#marcaEdit").val();
+									servico.modelo = $("#modeloEdit").val();
+									servico.placa = $("#placaEdit").val();
+									servico.valor = $("#valorEdit").val();
+									servico.metodo = $("#metodoEdit").val();
+
+									var cfg = {
+										type : "POST",
+										url : "../../rest/bibliotecaRest/editarServico",
+										data : servico,
+
+										success : function(msg) {
+											$(dialog).dialog("close");
+											var cfg = {
+												title : "Mensagem",
+												height : 250,
+												width : 400,
+												modal : true,
+												buttons : {
+													"OK" : function() {
+														$(this).dialog("close");
+													}
+												}
+											};
+											$("#msg").html(msg);
+											$("#msg").dialog(cfg);
+
+											SENAI.biblioteca.buscarServico();
+										},
+										error : function(err) {
+											alert("Erro ao editar o serviço "+ err.responseText);
+										}
+									};
+
+									SENAI.ajax.post(cfg);
+								}
+							},
+							close : function() {
+							}
+						};
+						$("#editarServico").dialog(cfg);
+					};
+					
+					
+					
+		
+		SENAI.biblioteca.teste = function(valor){
+			
+			var atual = valor.value;			
+			var cur_re = /\D*(\d+|\d.*?\d)(?:\D+(\d{2}))?\D*$/;
+			var parts = cur_re.exec(atual);
+			var number = parseFloat(parts[1].replace(/\D/,'')+'.'+(parts[2]?parts[2]:'00'));
+			valor.value = (number.toFixed(2));
+			
+		}
+				
+				});

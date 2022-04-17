@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value="total"/>
+		<item key="casesensitive" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="wrap" value="true"/>
+		<item key="wholeword" value="false"/>
+		<list key="findhistory">
+			<item value="total"/>
+			<item value="totalglobal"/>
+			<item value="nenhum registro"/>
+			<item value="nenhumregistro"/>
+			<item value="inputvalor"/>
+			<item value="inputvaor"/>
+			<item value="document.getElementById(&quot;inputvalor&quot;).value = &quot;R$ &quot;+soma.toFixed(2);"/>
+			<item value="nenhum registro encontrado"/>
+			<item value="nenhum registro encont"/>
+			<item value="nenhum registro encontro"/>
+			<item value="blur"/>
+			<item value="acrescentar"/>
+			<item value="i = 1"/>
+			<item value="i ="/>
+			<item value="linhas ="/>
+		</list>
+		<list key="replacehistory">
+			<item value="i = 0"/>
+			<item value="ORDER BY servicos.data DESC;"/>
+			<item value="ASC"/>
+			<item value="servicos.data"/>
+			<item value="DESC"/>
+			<item value="desc"/>
+			<item value=""/>
+			<item value="listaDeServicosData"/>
+			<item value="(&quot;inputvalor&quot;).value = &quot;R$ &quot;+soma;"/>
+			<item value="Servico"/>
+			<item value="Servicos"/>
+			<item value="listaDeServicos"/>
+			<item value=".resultadoClientes"/>
+			<item value="listaDeClientes"/>
+			<item value="listaDeEditoras"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_WIDTH" value="389"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		<item key="DIALOG_HEIGHT" value="293"/>
+		<item key="DIALOG_X_ORIGIN" value="118"/>
+		<item key="DIALOG_Y_ORIGIN" value="407"/>
+	</section>
+</section>

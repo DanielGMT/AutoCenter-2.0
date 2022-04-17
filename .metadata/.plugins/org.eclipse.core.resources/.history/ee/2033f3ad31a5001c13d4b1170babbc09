@@ -1,0 +1,508 @@
+SENAI.biblioteca = new Object();
+
+$(document)
+		.ready(
+				function() {
+					SENAI.biblioteca.cadastrarServico = function() {
+
+						var novoServico = new Object();
+						novoServico.servico = $("#inputservico").val(); 
+						
+						novoServico.marca = $("#inputmarca").val();
+						novoServico.modelo = $("#inputmodelo").val();
+						novoServico.placa = $("#inputplaca").val();
+						novoServico.valor = $("#inputvalor").val();
+						novoServico.metodo = $("#inputmetodo").val();
+
+
+						var cfgajax = {
+							url : "../../rest/bibliotecaRest/addServico",
+							data : novoServico,
+
+							success : function(msg) {
+								var cfg = {
+									title : "Mensagem",
+									height : 250,
+									width : 400,
+									modal : true,
+									buttons : {
+										"OK" : function() {
+											$(this).dialog("close");
+										}
+									}
+								};
+								$("#msg").html(msg);
+								$("#msg").dialog(cfg);
+
+								SENAI.biblioteca.buscarServico();
+							},
+
+							error : function(err) {
+								alert("Erro ao cadastrar um novo serviço!"
+										+ err.responseText);
+							}
+
+						};
+
+						SENAI.ajax.post(cfgajax);
+					};
+
+					SENAI.biblioteca.buscarServico = function() {
+						var valorBusca = $("#searchBar").val();
+						SENAI.biblioteca.exibirServicos(undefined, valorBusca);
+					};
+					
+					
+					SENAI.biblioteca.exibirServicos = function(listaDeServicos,
+							valorBusca) {
+						var search = document.getElementById("searchBar");
+						search.addEventListener("keyup", function(event) {
+						  if (event.keyCode === 13) {
+						   event.preventDefault();
+						   document.getElementById("searchButton").click();
+						  }
+						});
+						var html = "<table class='table table-bordered'>";
+						html += "<tr><th>Serviço</th><th>Marca</th><th>Modelo</th><th>Placa</th><th>Valor</th><th>Método</th><th id='acao'>Ações</th></tr>";
+						if (listaDeServicos != undefined
+								&& listaDeServicos.length > 0) {
+							
+							let perPage = 12
+							const state = {
+							  page: 1,
+							  perPage,
+							  
+							  totalPage: Math.ceil(listaDeServicos.length / perPage),
+							  maxVisibleButtons: 5
+							}
+						 
+						 const html = {
+									get(element){
+										return document.querySelector(element)
+									}
+							}
+
+							
+
+							
+						
+							
+							const controls = {
+							  next(){
+							    state.page++
+							   
+							    const lastPage = state.page > state.totalPage
+							    if(lastPage) {
+							    	state.page--
+							    }
+							  },
+							  prev(){
+								  state.page--
+								  if(state.page < 1){
+									  state.page++
+								  }
+							  },
+							  goTo(page){
+								 state.page = +page
+							   },
+							
+							  createListeners() {
+								 
+								  
+								  html.get('.next').addEventListener('click', () => {
+									  controls.next()
+									  update()
+								  })
+								  
+								  html.get('.prev').addEventListener('click', () => {
+									  controls.prev()
+									  update()
+								  })
+								  
+								 html.get('.last').addEventListener('click', () => {
+									  controls.goTo(state.totalPage)
+									  update()
+								  })
+								   
+								  html.get('.first').addEventListener('click', () => {
+									  controls.goTo(1)
+									  update()
+								  })}
+								 
+							  
+							}
+							
+							var str1 = "";
+	
+							var n = "";
+							var date = new Date();
+							var str2 = new Date();
+							var dd = String(str2.getDate()).padStart(2, '0');
+							var mm = String(str2.getMonth() + 1).padStart(2, '0'); //January is 0!
+							var yyyy = str2.getFullYear();
+						 
+							const list = {
+									
+									create(item){
+										
+										html.get('.fleinin').innerHTML += "<tr><td>"
+											+ item.servico
+											+ "</td>"
+											+"<td>"
+											+ item.marca
+											+ "</td>"
+											+"<td>"
+											+ item.modelo
+											+ "</td>"
+											+"<td>"
+											+ item.placa
+											+ "</td>"
+											+"<td>"
+											+ "R$ "+item.valor
+											+ "</td>"
+											+"<td>"
+											+ item.metodo
+											+ "</td>"
+											+ "<td><a class = 'edit' onclick = 'SENAI.biblioteca.editarServico("
+											+ item.id
+											+ "); '>"
+											+ "<i class='glyphicon glyphicon-pencil'></i></a>"
+											+ "<a class = 'delete' onclick = 'SENAI.biblioteca.deletarServico("
+											+ item.id
+											+ ")'>"
+											+ "<i class='glyphicon glyphicon-trash'></i></a></td></tr>";		
+										
+		
+							},
+							createTable(){
+								const table = document.createElement('table')
+								table.classList.add('table')
+								table.classList.add('table-bordered')
+								
+								table.innerHTML += "<tbody class ='fleinin'><tr><th>Serviço</th><th>Marca</th><th>Modelo</th><th>Placa</th><th>Valor</th><th>Método de P.</th><th>Ações</th></tr>"
+								+ "</tbody>";
+								html.get('.resultadoServicos').appendChild(table);
+							},
+							update(){
+								 
+								 html.get('.resultadoServicos').innerHTML = ""
+									 list.createTable()
+								let page = state.page - 1
+								let start = page * state.perPage
+								let end = start + state.perPage
+								const paginatedItems = listaDeServicos.slice(start, end)
+								
+								paginatedItems.forEach(list.create);
+							 }
+							 
+					 	}
+						
+						const buttons = {
+								element: html.get('.pagination .numbers'),
+								create(number) {
+									const button = document.createElement('a')
+									
+									button.innerHTML = number;
+									
+									if(state.page == number){
+										button.classList.add('active')
+									}
+									
+									button.addEventListener('click', (event) => {
+										const page = event.target.innerText
+										
+										controls.goTo(page)
+										update()
+									})
+									
+									buttons.element.appendChild(button)
+								},
+								update() {
+									buttons.element.innerHTML = ""
+										const {maxLeft, maxRight} = buttons.calculateMaxVisible()
+										
+										
+										for(let page = maxLeft; page<=maxRight; page++){
+											buttons.create(page)
+										}
+								},
+								calculateMaxVisible(){
+									const { maxVisibleButtons } = state
+									let maxLeft = (state.page - Math.floor(maxVisibleButtons / 2))
+									let maxRight = (state.page + Math.floor(maxVisibleButtons / 2))
+								 if(maxLeft < 1){
+									 maxLeft = 1
+									 maxRight = maxVisibleButtons
+								 }
+									if(maxRight > state.totalPage){
+										maxLeft = state.totalPage - (maxVisibleButtons - 1)
+										maxRight = state.totalPage
+										
+										if(maxLeft < 1){
+											maxLeft = 1
+										}
+									}
+									
+									return {maxLeft, maxRight}
+								}
+						}
+						
+						function update() {
+							list.update()
+					 		buttons.update()
+					 	}
+					 
+					 	function init(){
+					 		update()
+					 		controls.createListeners()
+					 	}
+					 	
+					 	init();
+							
+						
+						} else {
+							if (listaDeServicos == undefined) {
+								if (valorBusca == "") {
+									valorBusca = null;
+								}
+								var cfg = {
+									type : "POST",
+									url : "../../rest/bibliotecaRest/buscarServicosPorNome/"
+											+ valorBusca,
+									success : function(listaDeServicos) {
+										SENAI.biblioteca
+												.exibirServicos(listaDeServicos);
+									},
+									error : function(err) {
+										alert("Erro ao consultar os Servicos: "
+												+ err.responseText);
+									}
+								};
+
+								SENAI.ajax.post(cfg);
+							} else {
+								const html = {
+										get(element){
+											return document.querySelector(element)
+										}
+								}
+								html.get('.resultadoServicos').innerHTML = "<span><label><font color='red'> Nenhum registro encontrado. </font></label></span>";
+						
+							}
+						}
+						
+					};
+					
+					var count = 1;
+					var valor = parseFloat(0);
+									
+					SENAI.biblioteca.tirarServico = function(){
+						
+						const html = {
+										get(element){
+											return document.querySelector(element)
+										}
+								}
+						
+						html.get('#lugarzinho').innerHTML = "";
+						count = 1;
+							
+					}
+					
+					SENAI.biblioteca.buscarItens = function(item){
+						var valor = item.value;
+						var text = "";
+
+								const html = {
+										get(element){
+											return document.querySelector(element)
+										}
+								}					
+
+						for(i = 0; i < item.value; i++){
+							text += "Item"+count+"<input class='form-control' width='20' id='inputservico' autocomplete='on' placeholder='Descrição'><input class='form-control' id='item"+count+"' autocomplete='off' placeholder='Valor'>";
+							
+						}
+						
+						
+						html.get('#lugarzinho').innerHTML += text; 
+					}
+					SENAI.biblioteca.acrescentarServico = function(){
+						count += 1;
+							const html = {
+										get(element){
+											return document.querySelector(element)
+										}
+								}
+								
+								var meuid = "";
+							
+							
+				
+							
+								
+							
+					}
+					
+					SENAI.biblioteca.blur = function(){
+						valor += parseFloat($('#item'+count).val());
+						
+								
+						alert(valor);
+					}
+					
+					
+
+					SENAI.biblioteca.exibirServicos(undefined, "");
+
+					SENAI.biblioteca.deletarServico = function(id) {
+						msg = "Tem certeza que deseja excluir este serviço?"
+							var cfg = {
+									title : "Mensagem",
+									height : 250,
+									width : 400,
+									modal : true,
+									buttons : {
+										"Não" : function() {
+											$(this).dialog("close");
+										},
+										"Sim" : function(){
+											var cfg = {
+												type : "POST",
+												url : "../../rest/bibliotecaRest/deletarServico/"
+														+ id,
+												success : function(msg) {
+													var qtLinhas = $("#resultadoServicos tr").length;
+													$(this).parents("tr").remove();
+													$("#add-new").removeAttr("disabled");
+													var cfg = {
+														title : "Mensagem",
+														height : 250,
+														width : 400,
+														modal : true,
+														buttons : {
+															"OK" : function() {
+																$(this).dialog("close");
+															}
+														}
+													};
+					
+													$("#msg").html(msg);
+													$("#msg").dialog(cfg);
+					
+													SENAI.biblioteca.buscarServico();
+												},
+												error : function(err) {
+													alert("Erro: "
+															+ err.responseText);
+												}
+											};
+											SENAI.ajax.post(cfg);
+										}
+									}
+								};
+						$("#msg").html(msg);
+						$("#msg").dialog(cfg);
+					}
+
+					SENAI.biblioteca.editarServico = function(id) {
+						var cfg = {
+							type : "POST",
+							url : "../../rest/bibliotecaRest/buscarServicoPeloId/"
+									+ id,
+							success : function(servico) {
+								
+								$("#idServicoEdit").val(servico.id);
+								$("#servicoEdit").val(servico.servico);
+								$("#marcaEdit").val(servico.marca);
+								$("#modeloEdit").val(servico.modelo);
+								$("#placaEdit").val(servico.placa);
+								$("#valorEdit").val(servico.valor);
+								$("#metodoEdit").val(servico.metodo);
+								SENAI.biblioteca.exibirEdicao(servico);
+							},
+							error : function(err) {
+								alert("Erro ao editar o serviço!"
+										+ err.responseText);
+							}
+						};
+						SENAI.ajax.post(cfg);
+					};
+					
+
+					SENAI.biblioteca.exibirEdicao = function(servico) {
+						var cfg = {
+							title : "Editar Serviço",
+							height : 490,
+							width : 750,
+							modal : true,
+							buttons : {
+								"Cancelar" : function() {
+									$(this).dialog("close");
+								},
+
+								"Salvar" : function() {
+									var dialog = this;
+									var servico = new Object();
+									servico.id = $("#idServicoEdit").val();
+									servico.servico = $("#servicoEdit").val();
+									servico.marca = $("#marcaEdit").val();
+									servico.modelo = $("#modeloEdit").val();
+									servico.placa = $("#placaEdit").val();
+									servico.valor = $("#valorEdit").val();
+									servico.metodo = $("#metodoEdit").val();
+
+									var cfg = {
+										type : "POST",
+										url : "../../rest/bibliotecaRest/editarServico",
+										data : servico,
+
+										success : function(msg) {
+											$(dialog).dialog("close");
+											var cfg = {
+												title : "Mensagem",
+												height : 250,
+												width : 400,
+												modal : true,
+												buttons : {
+													"OK" : function() {
+														$(this).dialog("close");
+													}
+												}
+											};
+											$("#msg").html(msg);
+											$("#msg").dialog(cfg);
+
+											SENAI.biblioteca.buscarServico();
+										},
+										error : function(err) {
+											alert("Erro ao editar o serviço "+ err.responseText);
+										}
+									};
+
+									SENAI.ajax.post(cfg);
+								}
+							},
+							close : function() {
+							}
+						};
+						$("#editarServico").dialog(cfg);
+					};
+					
+					
+					$(function() {
+   						$("#inputvalor").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+  						
+  					})	
+		
+		SENAI.biblioteca.teste = function(valor){
+			
+			var atual = valor.value;			
+			var cur_re = /\D*(\d+|\d.*?\d)(?:\D+(\d{2}))?\D*$/;
+			var parts = cur_re.exec(atual);
+			var number = parseFloat(parts[1].replace(/\D/,'')+'.'+(parts[2]?parts[2]:'00'));
+			valor.value = (number.toFixed(2));
+			
+		}
+				
+				});
