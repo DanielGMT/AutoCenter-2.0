@@ -60,6 +60,7 @@
             <entry path="C:\Program Files\Java\jre1.8.0_231\lib\endorsed"/>
         </endorsedDirs>
     </libraryInfo>
+    <libraryInfo home="C:\Users\Danie\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208" version="17.0.2"/>
     <libraryInfo home="C:\Program Files\Java\jre1.8.0_221" version="1.8.0_221">
         <bootpath>
             <entry path="C:\Program Files\Java\jre1.8.0_221\lib\resources.jar"/>
@@ -79,4 +80,5 @@
             <entry path="C:\Program Files\Java\jre1.8.0_221\lib\endorsed"/>
         </endorsedDirs>
     </libraryInfo>
+    <libraryInfo home="C:\Users\Danie\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208\jre" version="17.0.2"/>
 </libraryInfos>

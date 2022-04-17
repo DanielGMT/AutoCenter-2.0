@@ -15,7 +15,7 @@ $(document)
 							konk[i] = document.getElementById("servico"+(i));
 											var qtd = document.getElementById("quantidade"+(i));			
 							
-								outrasoma += " ("+(qtd.value)+"x " + new String(konk[i].value)+")";
+								outrasoma += (qtd.value)+"x " + new String(konk[i].value) + ", ";
 							
 							
 							
@@ -31,7 +31,8 @@ $(document)
 				
 							document.getElementById("inputvalor").value = soma.toFixed(2);
 							soma = 0;
-						novoServico.servico = outrasoma; 
+							var outrasoma2 = outrasoma.substring(0, outrasoma.length - 2);
+						novoServico.servico = outrasoma2+"."; 
 						novoServico.observacao = $("#inputobservacao").val();
 						novoServico.quantidade = qtd.value;
 						outrasoma = "";
@@ -103,8 +104,11 @@ $(document)
 					SENAI.biblioteca.buscarServ = function(){
 						var valorBusca = $("#searchDate").val();
 						var valorBusca2 = $("#searchDate2").val();
+						$('#selectFiltro').val('50');
 						SENAI.biblioteca.exibirServicosData(undefined, valorBusca, valorBusca2);
 					}
+					
+					
 					var dataHj = "";
 					var date = new Date();
 						
@@ -201,7 +205,35 @@ $(document)
    						$("#inputvalor").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
 						
 						$("#item0").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+  					
+  						document.getElementById("inputdata").value = str2;
   					});	
+  					
+  					$('input[name=placas]').mask('AAA 0U00', {
+					    translation: {
+					        'A': {
+					            pattern: /[A-Za-z]/
+					        },
+					        'U': {
+					            pattern: /[A-Za-z0-9]/
+					        },
+					    },
+					    onKeyPress: function (value, e, field, options) {
+					        // Convert to uppercase
+					        e.currentTarget.value = value.toUpperCase();
+					
+					        // Get only valid characters
+					        let val = value.replace(/[^\w]/g, '');
+					
+					        // Detect plate format
+					        let isNumeric = !isNaN(parseFloat(val[4])) && isFinite(val[4]);
+					        let mask = 'AAA 0U00';
+					        if(val.length > 4 && isNumeric) {
+					            mask = 'AAA-0000';
+					        }
+					        $(field).mask(mask, options);
+					    }
+					});
   					
   					var count = 0;
   					
@@ -310,7 +342,7 @@ $(document)
 										var itemvalor = item.valor;
 										
 										document.getElementById("totalglobal").value = "R$ "+totalglobal.toFixed(2);
-										tr.innerHTML += "<td>"
+										tr.innerHTML += "<td class='ellipsis'>"
 											+ item.servico
 											+ "</td>"
 											+"<td>"
@@ -1365,7 +1397,7 @@ $(document)
 					
 					
 					SENAI.biblioteca.acrescentarServico = function(){
-						document.getElementById("inputdata").value = str2;
+						
 						
 						
 							var test = document.getElementById("item"+(linhas+1));
@@ -1397,7 +1429,7 @@ $(document)
 						
 						divtest.innerHTML = "Item"+(linhas+1)+"<div><select id='servico"+linhas+"' autocomplete='off'><option value='Outro'>Outro</option><option value='Amortecedor dianteiro'>Amortecedor dianteiro</option><option value='Amortecedor trazeiro'>Amortecedor trazeiro</option><option value='Balanceamento'>Balanceamento</option><option value='Bico'>Bico</option><option value='Batente'>Batente</option><option value='Balança'>Balança</option><option value='Barra axial'>Barra axial</option><option value='Bieleta'>Bieleta</option><option value='Bucha da balança'>Bucha da balança</option><option value='Bucha da barra estabilizadora'>Bucha da barra estabilizadora</option><option value='Coifa do amortecedor'>Coifa do amortecedor</option><option value='Coifa da homocinética'>Coifa da homocinética</option><option value='Camara de Moto'>Camara de Moto</option><option value='Camara de Carro'>Camara de Carro</option><option value='Coxim'>Coxim</option><option value='Coxim de câmbio'>Coxim de câmbio</option><option value='Conserto de roda'>Conserto de roda</option><option value='Cubo dianteiro'>Cubo dianteiro</option><option value='Cubo trazeiro'>Cubo trazeiro</option><option value='Cilindro de freio'>Cilindro de freio</option><option value='Desempeno de Roda'>Desempeno de Roda</option><option value='Disco de freio dianteiro'>Disco de freio dianteiro</option><option value='Disco de freio trazeiro'>Disco de freio trazeiro</option><option value='Friso de pneu'>Friso de pneu</option><option value='Homocinética'>Homocinética</option><option value='Manutenção'>Manutenção</option><option value='Moto'>Moto</option><option value='Mão de obra'>Mão de obra</option><option value='Mola'>Mola</option><option value='Morceguinho'>Morceguinho</option><option value='Pastilha de freio dianteiro'>Pastilha de freio dianteiro</option><option value='Pastilha de freio trazeiro'>Pastilha de freio trazeiro</option><option value='Pivô'>Pivô</option><option value='Refil'>Refil</option><option value='Remendo frio'>Remendo frio</option><option value='Remendo quente'>Remendo quente</option><option value='Remendo de Camara'>Remendo de Camara</option><option value='Rebaixamento'>Rebaixamento</option><option value='Rodízio'>Rodízio</option><option value='Rolamento dianteiro'>Rolamento dianteiro</option><option value='Rolamento trazeiro'>Rolamento trazeiro</option><option value='Socorro'>Socorro</option><option value='Troca'>Troca</option><option value='Troca de bico'>Troca de bico</option><option value='Troca de calota'>Troca de calota</option><option value='Terminal de direção'>Terminal de direção</option><option value='Venda de pneu 13'>Venda de pneu 13</option><option value='Venda de pneu 14'>Venda de pneu 14</option><option value='Venda de pneu 15'>Venda de pneu 15</option><option value='Venda de pneu 16'>Venda de pneu 16</option><option value='Venda de pneu 17'>Venda de pneu 17</option><option value='Venda de pneu 18'>Venda de pneu 18</option><option value='Venda de pneu 19'>Venda de pneu 19</option><option value='Venda de pneu 20'>Venda de pneu 20</option><option value='Venda de roda'>Venda de roda</option><option value='Venda de Acessório'>Venda de Acessório</option><option value='Vulcanizo'>Vulcanizo</option><option value='Vedação'>Vedação</option></select>"
 				+ "<select onChange='SENAI.biblioteca.selectQnt(this)' name='quantidade' id='quantidade"+linhas+"' autocomplete='off'"
-				+ "minlength='3' maxlength='25' maxlength='25'><option value='1'>x1</option><option value='2'>x2</option><option value='3'>x3</option><option value='4'>x4</option><option value='5'>x5</option><option value='6'>x6</option><option value='7'>x7</option><option value='x8'>8</option><option value='9'>x9</option><option value='10'>x10</option></select><input class='form-control' id='item"+linhas+"' onblur= 'SENAI.biblioteca.blur(this)' autocomplete='off' placeholder='Valor'><label class='control-label'></label></div>";
+				+ "minlength='3' maxlength='25' maxlength='25'><option value='1'>x1</option><option value='2'>x2</option><option value='3'>x3</option><option value='4'>x4</option><option value='5'>x5</option><option value='6'>x6</option><option value='7'>x7</option><option value='8'>x8</option><option value='9'>x9</option><option value='10'>x10</option></select><input class='form-control' id='item"+linhas+"' onblur= 'SENAI.biblioteca.blur(this)' autocomplete='off' placeholder='Valor Unitário'><label class='control-label'></label></div>";
 						
 							div.appendChild(divtest);
 							
@@ -1514,6 +1546,10 @@ $(document)
 					SENAI.biblioteca.exibirServicos(undefined, "");
 
 					SENAI.biblioteca.verificaResult = function(valor){
+
+					document.getElementById("searchDate").value = "dd/mm/aaaa";
+					document.getElementById("searchDate2").value = "dd/mm/aaaa";
+						
 						var metodo = 0;
 						if(valor.value == 0){
 							SENAI.biblioteca.buscarServico();
@@ -1612,7 +1648,7 @@ $(document)
 								$("#marcaEdit").val(servico.marca);
 								$("#modeloEdit").val(servico.modelo);
 								$("#placaEdit").val(servico.placa);
-								$("#valorEdit").val(servicovalor.toFixed(2));
+								$("#valorEdit").val("R$ "+servicovalor.toFixed(2));
 								$("#metodoEdit").val(servico.metodo);
 								$("#dataEdit").val(servico.data);
 								SENAI.biblioteca.exibirEdicao(servico);
@@ -1630,8 +1666,8 @@ $(document)
 
 					SENAI.biblioteca.exibirEdicao = function(servico) {
 						var cfg = {
-							title : "Editar Serviço",
-							height : 590,
+							title : "Visualizar Serviço",
+							height : 620,
 							width : 750,
 							modal : true,
 							buttons : {

@@ -73,7 +73,8 @@ response.sendRedirect("../../index.html");
 	</div>
 </nav>
 <div class="container">
-
+<div id="registerContent">
+</div>
 </div>
 </body>
 </html>

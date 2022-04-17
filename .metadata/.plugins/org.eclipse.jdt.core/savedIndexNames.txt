@@ -1,22 +1,2 @@
-INDEX VERSION 1.131+C:\Users\Henrique\Desktop\Nova pasta (2)\ProjetoIndividual\.metadata\.plugins\org.eclipse.jdt.core
-826685932.index
-2244865852.index
-2360487609.index
-1771690741.index
-4284521350.index
-2894865948.index
-4052432941.index
-2191715142.index
-3473634699.index
-3794340446.index
-4161774230.index
-978878550.index
-617266044.index
-1085574459.index
-2147462780.index
-3799786077.index
-441451021.index
-1685524696.index
+INDEX VERSION 1.131+C:\Users\Danie\Documents\GitHub\AutoCenter-2.0\.metadata\.plugins\org.eclipse.jdt.core
 1204385438.index
-2058776256.index
-1865797976.index
