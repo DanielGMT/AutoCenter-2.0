@@ -6,7 +6,7 @@ $(document)
 					var tour = [];
 					
 					SENAI.biblioteca.cadastrarServico = function() {
-
+						
 						var novoServico = new Object();
 						for(i = 0; i < (linhas+1); i++){
 							var conc = [];
@@ -28,7 +28,10 @@ $(document)
 									}
 							}
 						
-				
+						soma = soma - document.getElementById("inputvalordesc").value;
+						if(soma < 0){
+							soma = 0;
+						}
 							document.getElementById("inputvalor").value = soma.toFixed(2);
 							soma = 0;
 							var outrasoma2 = outrasoma.substring(0, outrasoma.length - 2);
@@ -58,6 +61,16 @@ $(document)
 						$("#inputvalor").val(0);
 						$("#inputmetodo").val(1);
 						
+						var teste = document.getElementById("lugarzinho");
+						
+						while(linhas>0){
+							teste.removeChild(teste.lastChild);
+							linhas = linhas - 1;
+						}
+							
+								
+						document.getElementById("item0").value = "";
+						
 						var cfgajax = {
 							url : "../../rest/bibliotecaRest/addServico",
 							data : novoServico,
@@ -77,7 +90,21 @@ $(document)
 								$("#msg").html(msg);
 								$("#msg").dialog(cfg);
 
-								SENAI.biblioteca.buscarServico();
+							
+							
+							if(document.getElementById("selectFiltro").value != 50){
+								
+								var valor = document.getElementById("selectFiltro");
+								SENAI.biblioteca.verificaResult(valor);
+							}else{
+								
+								SENAI.biblioteca.buscarServ();
+								
+							}
+									
+								
+							
+								
 								
 							},
 
@@ -204,9 +231,13 @@ $(document)
 					$(function() {
    						$("#inputvalor").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
 						
+						$("#inputvalordesc").maskMoney({prefix:'- R$ ', allowNegative: false, thousands:'.', decimal:',', affixesStay: false});
+						
 						$("#item0").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
   					
   						document.getElementById("inputdata").value = str2;
+  						
+  					
   					});	
   					
   					$('input[name=placas]').mask('AAA 0U00', {
@@ -651,7 +682,7 @@ $(document)
 											+ "<td><a class = 'edit' onclick = 'SENAI.biblioteca.editarServico("
 											+ item.id
 											+ "); '>"
-											+ "<i class='glyphicon glyphicon-open-eye'></i></a>"
+											+ "<i class='glyphicon glyphicon-eye-open'></i></a>"
 											+ "<a class = 'delete' onclick = 'SENAI.biblioteca.deletarServico("
 											+ item.id
 											+ ")'>"
@@ -831,7 +862,13 @@ $(document)
 																$("#item"+(i)).maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
 
 							}
+							
+							soma = soma - document.getElementById("inputvalordesc").value;
+						if(soma < 0){
+							soma = 0;
+						}
 							document.getElementById("inputvalor").value = "R$ "+soma.toFixed(2);
+							
 						
 						}	
 						soma = 0;
@@ -974,7 +1011,7 @@ $(document)
 											+ "<td><a class = 'edit' onclick = 'SENAI.biblioteca.editarServico("
 											+ item.id
 											+ "); '>"
-											+ "<i class='glyphicon glyphicon-pencil'></i></a>"
+											+ "<i class='glyphicon glyphicon-eye-open'></i></a>"
 											+ "<a class = 'delete' onclick = 'SENAI.biblioteca.deletarServico("
 											+ item.id
 											+ ")'>"
@@ -1245,7 +1282,7 @@ $(document)
 											+ "<td><a class = 'edit' onclick = 'SENAI.biblioteca.editarServico("
 											+ item.id
 											+ "); '>"
-											+ "<i class='glyphicon glyphicon-pencil'></i></a>"
+											+ "<i class='glyphicon glyphicon-eye-open'></i></a>"
 											+ "<a class = 'delete' onclick = 'SENAI.biblioteca.deletarServico("
 											+ item.id
 											+ ")'>"
@@ -1401,7 +1438,10 @@ $(document)
 						
 						
 							var test = document.getElementById("item"+(linhas+1));
-							
+							soma = soma - document.getElementById("inputvalordesc").value;
+						if(soma < 0){
+							soma = 0;
+						}
 							document.getElementById("inputvalor").value = "R$ "+soma.toFixed(2);
 						
 							
@@ -1454,6 +1494,10 @@ $(document)
 																$("#item"+(i)).maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
 
 							}
+							soma = soma - document.getElementById("inputvalordesc").value;
+						if(soma < 0){
+							soma = 0;
+						}
 							document.getElementById("inputvalor").value = "R$ "+soma.toFixed(2);
 							soma = 0;
 							}
@@ -1484,6 +1528,11 @@ $(document)
 							
 							
 						}
+						
+						soma = soma - document.getElementById("inputvalordesc").value;
+						if(soma < 0){
+							soma = 0;
+						}
 						document.getElementById("inputvalor").value = "R$ "+soma.toFixed(2);
 						soma = 0;
 						
@@ -1499,6 +1548,38 @@ $(document)
 						var parts = cur_re.exec(atual);
 						var number = parseFloat(parts[1].replace(/\D/,'')+'.'+(parts[2]?parts[2]:'00'));
 						valor.value = (number.toFixed(2));
+						
+						
+
+						for(i = 0; i < (linhas+1); i++){
+							var conc = [];
+							conc[i] = document.getElementById("item"+(i));
+							
+							if(parseFloat(conc[i].value)> 0){
+								
+								var qtd = document.getElementById("quantidade"+(i));
+								
+								var doc = qtd.value;
+								
+									
+								soma += parseFloat(conc[i].value*doc);
+								
+							}
+							
+							$("#item"+(i)).maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+
+							
+						}
+						
+						soma = soma - valor.value;
+						if(soma < 0){
+							soma = 0;
+						}
+				
+							document.getElementById("inputvalor").value = "R$ "+soma.toFixed(2);
+						
+						soma = 0;
+						
 					}
 					
 					SENAI.biblioteca.blur = function(valor){
@@ -1535,8 +1616,14 @@ $(document)
 
 							
 						}
+						
+						soma = soma - document.getElementById("inputvalordesc").value;
+						if(soma < 0){
+							soma = 0;
+						}
 				
 							document.getElementById("inputvalor").value = "R$ "+soma.toFixed(2);
+						
 							
 						soma = 0;
 					}
@@ -1620,7 +1707,12 @@ $(document)
 													$("#msg").html(msg);
 													$("#msg").dialog(cfg);
 					
-													SENAI.biblioteca.buscarServico();
+													if(document.getElementById("selectFiltro").value != 50){
+														var valor = document.getElementById("selectFiltro");
+														SENAI.biblioteca.verificaResult(valor);
+													}else{
+														SENAI.biblioteca.buscarServ();
+													}
 												},
 												error : function(err) {
 													alert("Erro: "

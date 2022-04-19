@@ -2,27 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="total"/>
+		<item key="selection" value="search"/>
 		<item key="casesensitive" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="wrap" value="true"/>
 		<item key="wholeword" value="false"/>
 		<list key="findhistory">
-			<item value="total"/>
-			<item value="totalglobal"/>
-			<item value="nenhum registro"/>
-			<item value="nenhumregistro"/>
-			<item value="inputvalor"/>
-			<item value="inputvaor"/>
-			<item value="document.getElementById(&quot;inputvalor&quot;).value = &quot;R$ &quot;+soma.toFixed(2);"/>
-			<item value="nenhum registro encontrado"/>
-			<item value="nenhum registro encont"/>
-			<item value="nenhum registro encontro"/>
-			<item value="blur"/>
-			<item value="acrescentar"/>
-			<item value="i = 1"/>
-			<item value="i ="/>
-			<item value="linhas ="/>
+			<item value="search"/>
+			<item value="3"/>
+			<item value="data"/>
+			<item value="total de di"/>
+			<item value="servico"/>
+			<item value="buscaremprestimos"/>
+			<item value="buscarservicos"/>
+			<item value="buscaremprestimo"/>
 		</list>
 		<list key="replacehistory">
 			<item value="i = 0"/>
@@ -33,13 +26,6 @@
 			<item value="desc"/>
 			<item value=""/>
 			<item value="listaDeServicosData"/>
-			<item value="(&quot;inputvalor&quot;).value = &quot;R$ &quot;+soma;"/>
-			<item value="Servico"/>
-			<item value="Servicos"/>
-			<item value="listaDeServicos"/>
-			<item value=".resultadoClientes"/>
-			<item value="listaDeClientes"/>
-			<item value="listaDeEditoras"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

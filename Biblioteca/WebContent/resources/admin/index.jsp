@@ -50,11 +50,7 @@ response.sendRedirect("../../index.html");
 			<li><a href="#" onclick="loadPage('relatorio')">Gráficos</a></li>
 		</ul>
 		<ul class="nav navbar-nav">
-			<li class="dropdown"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#">Registros <span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a href="#" onclick="loadPage('autor')">Registro de Serviços</a></li>
-				</ul></li>
+			<li><a href="#" onclick="loadPage('autor')">Registro de Serviços</a></li>		
 		</ul>
 		<ul id="perfil" class="nav navbar-nav navbar-right">
 			<li class="dropdown"><a href="#" class="dropdown-toggle"

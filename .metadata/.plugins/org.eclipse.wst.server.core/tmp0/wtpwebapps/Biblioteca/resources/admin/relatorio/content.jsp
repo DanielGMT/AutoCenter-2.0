@@ -6,13 +6,13 @@
 <br/><br/>
 <div id="reportPage" style="width: 100%; height: 100%;">
 	  <div style="width: 50%; margin-bottom: 3%; margin-left: auto; margin-right: auto;">
-	    <canvas  id="myChart" class="line-chart"></canvas>
+	   
 	    <div id="minhadiv">
 	    	
-	       <input type="date" class="form-control" id="search1"/>
-	       <span id="span2" class="glyphicon glyphicon-arrow-right"></span>
-	       <button id="teste" onclick="SENAI.biblioteca.teste()">Buscar</button>
-	       <input type="date" class="form-control" id="search2"/>
+	       <input type="date" onChange = "SENAI.biblioteca.teste()" id="valorBusca"/>
+	      
+	       
+	       <input type="date" onChange = "SENAI.biblioteca.teste()" id="valorBusca2"/>
 	       
 	     </div>
 	       <canvas  id="myChart2" class="line-chart2">

@@ -38,15 +38,21 @@
 				<BR><BR>
 				<div style="width: 50%; float: left;">
 					<label for="valor">Valor Total</label><input disabled
-					class="form-control" onblur="SENAI.biblioteca.teste(this)" value ="R$" autocomplete="off" type="text" id="inputvalor">
+					class="form-control" style="background-color: #b1dd9e;" onblur="SENAI.biblioteca.teste(this)" value ="R$" autocomplete="off" type="text" id="inputvalor">
 				</div>
 				<div style="width: 50%; float: right;">
 					<label for="data">Data de serviço</label> <input
 					class="form-control" autocomplete="off" type="date" id="inputdata">
 				</div>
-				<label class = "control-label" for="observacao">Observação</label>
-				<textarea class='form-control' id='inputobservacao' cols='20' autocomplete='off' placeholder='Não obrigatório'></textarea>
+				<div style="width: 50%; float: left;">
+					<label for="valor">Desconto: </label>
+					<input style="background-color: #cd5c5c;" onblur="SENAI.biblioteca.outroblur(this)" placeholder="- R$" autocomplete="off" type="text" id="inputvalordesc">
+				</div>
 				
+				<div style="width: 50%; float: left;">
+					<label class = "control-label" for="observacao">Observação</label>
+					<textarea class='form-control' id='inputobservacao' cols='20' autocomplete='off' placeholder='Não obrigatório'></textarea>
+				</div>
 				
 				<div style="width: 50%; float: left;">
 					<label class="control-label" for="marca">Marca</label>
@@ -173,7 +179,7 @@
 	<label>Serviço:</label> <textarea disabled id="servicoEdit" class="form-control" name="servico" type="text"></textarea>
 	<input name="idServico" id="idAutorEdit" type="hidden">
 	<label>Observação:</label>
-	<textarea disabled class="form-control" id="observacaoEdit" cols="20" autocomplete="off" placeholder="Não obrigatório"></textarea>
+	<textarea disabled class="form-control" id="observacaoEdit" cols="20" autocomplete="off"></textarea>
 	<input name="idObservacao" id="idOservacaoEdit" type="hidden">
 	<label>Marca:</label> <select disabled class="form-control" name="marca" id="marcaEdit">
 				<option value="Outro">Outro</option>

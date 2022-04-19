@@ -2,6 +2,8 @@ package br.com.BibliotecaRest.rest;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +30,7 @@ import br.com.BibliotecaRest.objetos.Servico;
 import br.com.BibliotecaRest.objetos.Editora;
 import br.com.BibliotecaRest.objetos.Emprestimo;
 import br.com.BibliotecaRest.objetos.Livro;
+import br.com.BibliotecaRest.objetos.RelatorioServico;
 import br.com.BibliotecaRest.objetos.Sessao;
 import br.com.BibliotecaRest.objetos.SessaoEmail;
 import br.com.BibliotecaRest.objetos.Usuario;
@@ -107,6 +110,30 @@ public class BibliotecaRest extends UtilRest {
 			return this.buildErrorResponse(e.getMessage());
 		}
 	}
+	
+	
+	@GET
+	@Path("/buscarServicosDoMes/{valorBusca}/{valorBusca2}")
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	public Response buscarServicosDoMes(@PathParam("valorBusca") String valorBusca, @PathParam("valorBusca2") String valorBusca2) {
+		System.out.println(valorBusca + valorBusca2);
+		try {
+			List<RelatorioServico> relatorioServico = new ArrayList<RelatorioServico>();
+			
+			Conexao conec = new Conexao();
+			Connection conexao = conec.abrirConexao();
+			JDBCBibliotecaDAO jdbcBiblioteca = new JDBCBibliotecaDAO(conexao);
+			relatorioServico = jdbcBiblioteca.buscarNoMes(valorBusca, valorBusca2);
+			conec.fecharConexao();
+
+			return this.buildResponse(relatorioServico);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return this.buildErrorResponse(e.getMessage());
+		}
+	}
+	
+
 
 
 	@POST
@@ -905,15 +932,15 @@ public Response finalizarEmprestimo(@PathParam("id") int id) {
 public Response buscarEmprestimos() {
 	try {
 		
-		List<Emprestimo> emprestimo = new ArrayList<Emprestimo>();
+		List<Servico> servico = new ArrayList<Servico>();
 		
 		Conexao conec = new Conexao();
 		Connection conexao = conec.abrirConexao();
 
 		JDBCBibliotecaDAO jdbcBiblioteca = new JDBCBibliotecaDAO(conexao);
-		emprestimo = jdbcBiblioteca.buscarEmprestimos();
+		servico = jdbcBiblioteca.buscarServicos();
 		conec.fecharConexao();
-		return this.buildResponse(emprestimo);
+		return this.buildResponse(servico);
 	} catch (Exception e) {
 		e.printStackTrace();
 		return this.buildErrorResponse(e.getMessage());

@@ -8,81 +8,7 @@ $(document)
 					
 						SENAI.biblioteca.exibirRelatorio = function(){
 							
-							var cfg = {
-									type : "GET",
-									url : "../../rest/bibliotecaRest/buscarEmprestimos2",
-									
-							success : function(emprestimo) {
-								var titulo = null;
-								var cfg = {
-										type : "GET",
-										url : "../../rest/bibliotecaRest/coletarLivros/",
-										
-								success : function(livro) {
-									var livros = [];
-									var emprestimos = [];
-									
-										
-										
-									
-										
-								var ctx = document.getElementsByClassName("line-chart");
-								
-								//type, data e options
-								var count = 0;
-								for (var i = 0; i < livro.length; i++){
-									count += 1;
-								}
-								var chartGraph = new Chart(ctx, {
-									type: 'bar',
-									
-									data:{
-										
-										labels: livros,
-										datasets: [{
-											
-											label: "Livros mais emprestados",
-											data: emprestimos,
-											borderwidth: 6,
-											borderColor: 'rgba(255, 99, 132)',
-											backgroundColor: ['green', 'blue', 'yellow', 'red', 'Purple', 'Orange'],
-										}]
-									},
-									options: {
-										title: {
-											display: true,
-											fontsize: 20,
-											text: "GRÁFICO DE EMPRÉSTIMOS"
-										},
-										labels: {
-											fontStyle: "bold"
-										},
-								        scales: {
-								            yAxes: [{
-								                ticks: {
-								                    beginAtZero: true
-								                }
-								            }]
-								        }
-								    }
-								
-								});
-							},
-							error : function(err) {
-								
-							}
 							
-						};
-							
-							
-							SENAI.ajax.post(cfg);	
-							
-							},
-							error : function(err) {
-								
-							}
-							};
-							SENAI.ajax.post(cfg);
 							
 							var valorTotal = [];
 							var valor = 0;
@@ -95,34 +21,44 @@ $(document)
 							  var n = (d.getMonth()+1);
 							  var value = "";
 							  
-							  
+							  			var valorBusca = $("#valorBusca").val();
+						var valorBusca2 = $("#valorBusca2").val();
+						
+						if(valorBusca == ""){
+							valorBusca = null;
+						}
+						
+						if(valorBusca2 == ""){
+							valorBusca2 = null;
+						}
+						
+			var valorTotal = [];
+			
+							var meses = [];
+							var anos = [];
+							var date = [];
+							
 						
 							var cfg = {
 									type : "GET",
-									url : "../../rest/bibliotecaRest/buscarEmprestimosFinalizados",
-									
-							success : function(emprestimos) {
+									url : "../../rest/bibliotecaRest/buscarServicosDoMes/"+valorBusca+"/"+valorBusca2,
+							success : function(relatorioServico) {
 								
-								var cfg = {
-										type : "GET",
-										url : "../../rest/bibliotecaRest/buscarDividas2",
-										
-										success : function(dividas) {
-												for(var i = 0; i < emprestimos.length; i++){
+												for(var i = 0; i < relatorioServico.length; i++){
 												
-												for(var j = 0; j < dividas.length; j++){
+												
 													
-													if(dividas[j].emprestimoId == emprestimos[i].id){
+												
+																valorTotal.push(relatorioServico[i].total.toFixed(2));
 														
-											
-																valorTotal.push(dividas[j].valor);
-														meses.push(emprestimos[i].dataReal);
-					
-													}
-												}
+														meses.push(relatorioServico[i].mes);
+														anos.push(relatorioServico[i].ano);
+														date.push(relatorioServico[i].mes+"/"+relatorioServico[i].ano);
+												
 											
 												
 											}
+												document.getElementsByClassName("line-chart2").innerHTML="";
 											var ctx = document.getElementsByClassName("line-chart2");
 											
 											//type, data e options
@@ -132,10 +68,11 @@ $(document)
 												
 												data:{
 													
-													labels: meses,
+													labels: date,
+													
 													datasets: [{
 														
-														label: "Total de dívidas pagas",
+														label: "Total no mês",
 														data: valorTotal,
 														borderwidth: 6,
 														borderColor: 'rgba(255, 99, 132)',
@@ -144,11 +81,6 @@ $(document)
 												},
 												options: {
 													
-													title: {
-														display: true,
-														fontsize: 20,
-														text: "GRÁFICO DE DÍVIDAS"
-													},
 													labels: {
 														fontStyle: "bold"
 													},
@@ -170,26 +102,18 @@ $(document)
 											
 								};
 								SENAI.ajax.post(cfg);
-							},
-								error : function(err) {
-									
-								}
-							};
-							SENAI.ajax.post(cfg);
 							
-							////////////////////////////
-							
-							
-							
-						}
+						   
+						};
+		
 						
 						
 						
 						SENAI.biblioteca.teste = function(){
 							
 							
-							var data1 = new Date( $(search1).val());
-							var data2 = new Date( $(search2).val());
+							var data1 = new Date( $(valorBusca).val());
+							var data2 = new Date( $(valorBusca2).val());
 							let data = new Date(data1.getFullYear(), (data1.getMonth()+1), 0);
 							let dataB = new Date(data2.getFullYear(), (data2.getMonth()+1), 0);
 							
@@ -236,47 +160,43 @@ $(document)
 							
 							
 							
-							
-							var dataFinal1 = (anoAtual1+"-"+mesAtual1+"-"+diaAtual1);
-							
-							
-							var dataFinal2 = (anoAtual2+"-"+mesAtual2+"-"+diaAtual2);
-							
-							
+						var valorBusca = $("#valorBusca").val();
+						var valorBusca2 = $("#valorBusca2").val();
 						
 						
 							var valorTotal = [];
 			
 							var meses = [];
+							var anos = [];
+							var date = [];
 							
-							
+						if(valorBusca == null || valorBusca == ""){
+							valorBusca = null;
+						}	
+						if(valorBusca2 == null || valorBusca2 == ""){
+							valorBusca2 = null;
+						}
 						
-							var dataReal = "SELECT * FROM emprestimos where status = 2 and data_real_devolucao >= '"+dataFinal1+"' and data_real_devolucao <= '"+dataFinal2+"' order by data_real_devolucao ASC;";
 							var cfg = {
-									type : "POST",
-									
-									url : "../../rest/bibliotecaRest/buscarEmpPorData/" + dataReal, 
+									type : "GET",
+									url : "../../rest/bibliotecaRest/buscarServicosDoMes/"+valorBusca+"/"+valorBusca2,
 							
-							success : function(emprestimos) {
-								var cfy = {
-										type : "GET",
-										url : "../../rest/bibliotecaRest/buscarDividas2",
-										
-										success : function(dividas) {
-												for(var i = 0; i < emprestimos.length; i++){
+							success : function(relatorioServico) {
+								
+												for(var i = 0; i < relatorioServico.length; i++){
 												
-												for(var j = 0; j < dividas.length; j++){
+												
 													
-													if(dividas[j].emprestimoId == emprestimos[i].id){
+												
+																valorTotal.push(relatorioServico[i].total.toFixed(2));
 														
-														var dataDividida = emprestimos[i].dataReal.split("-");
-														var dataConvertida = dataDividida[2] + "/" + dataDividida[1] + "/" + dataDividida[0];
-																valorTotal.push(dividas[j].valor);
+														meses.push(relatorioServico[i].mes);
 														
-														meses.push(dataConvertida);
-					
-													}
-												}
+														anos.push(relatorioServico[i].ano);
+														
+														date.push(relatorioServico[i].mes+"/"+relatorioServico[i].ano);
+													
+												
 											
 												
 											}
@@ -290,10 +210,10 @@ $(document)
 												
 												data:{
 													
-													labels: meses,
+													labels: date,
 													datasets: [{
 														
-														label: "Total de dívidas pagas",
+														label: "Total no Mês",
 														data: valorTotal,
 														borderwidth: 6,
 														borderColor: 'rgba(255, 99, 132)',
@@ -322,13 +242,7 @@ $(document)
 										}
 											
 								};
-								SENAI.ajax.post(cfy);
-							},
-							error : function(err) {
-								
-							}
-						};
-						SENAI.ajax.post(cfg);
+								SENAI.ajax.post(cfg);
 							
 						   
 						};

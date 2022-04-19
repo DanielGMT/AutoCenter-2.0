@@ -25,4 +25,5 @@
     <fullyQualifiedTypeName name="java.util.Random"/>
     <fullyQualifiedTypeName name="br.com.BibliotecaRest.objetos.SessaoEmail"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="br.com.BibliotecaRest.objetos.RelatorioServico"/>
 </qualifiedTypeNameHistroy>
