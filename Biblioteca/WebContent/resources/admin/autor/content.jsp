@@ -3,6 +3,7 @@
 <script type="text/javascript"src="autor/js/jquery.mask.js"></script>
 
 
+
 <div id="cadastrarAutor">
 	<p>
 		<button class="btn btn-primary" onclick="SENAI.biblioteca.descerPag()" id="downButton" type="button"
@@ -130,7 +131,8 @@
 		<div id="entrar" style="margin-left: 44%;">
 		
 			<button type="button" id="add-new"
-				onclick="SENAI.biblioteca.cadastrarServico()" class="btn btn-primary">Registrar</button>
+				onclick="SENAI.biblioteca.cadastrarServico()" class="btn btn-primary">Registrar</button><button type="button" id="telaimprime"
+				onclick="loadPage('imprimir')" class="btn btn-primary">Imprimir</button>
 		</div>
 	</div>	
 	</form>

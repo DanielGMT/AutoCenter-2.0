@@ -26,4 +26,6 @@
     <fullyQualifiedTypeName name="br.com.BibliotecaRest.objetos.SessaoEmail"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="br.com.BibliotecaRest.objetos.RelatorioServico"/>
+    <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+    <fullyQualifiedTypeName name="java.time.format.DateTimeFormatter"/>
 </qualifiedTypeNameHistroy>

@@ -22,6 +22,7 @@
 <script type="text/javascript"src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="index.js"></script>
 <script type="text/javascript" src="../js/ajax.js"></script>
+
 </head>
 
 <body onload = "loadPage('main')">
