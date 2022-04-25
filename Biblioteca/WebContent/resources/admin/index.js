@@ -5,18 +5,14 @@ loadPage = function(caminho){
 			url : "../../rest/bibliotecaRest/buscarUsuarioLogado/",
 			success : function(usuario) {
 				
-				if(usuario == null){
-					window.location = "../../index.html";
-				}else{
+				
 					var cfg = {
 							type : "POST",
 							url : "../../rest/bibliotecaRest/buscarAdminPeloUsuario/" 
 								+ usuario.login,
 							
 					success : function(admin) {
-						if(admin.nome == null && admin.imagem == null){
-							deslogar();
-						}
+						
 						var html = "";
 						
 						html += "<b>"+admin.nome+"</b>";
@@ -39,10 +35,15 @@ loadPage = function(caminho){
 				
 				
 					$(".ui-dialog").remove();
-					$('#registerContent').html('');
+					if(caminho == "main"){
+						window.location = "index.jsp";
+					}else{
+						$('#registerContent').html('');
 					$("#registerContent").load(caminho+"/content.jsp");
+					}
 					
-				}
+					
+				
 					
 			},
 		

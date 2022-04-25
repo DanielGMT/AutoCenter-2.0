@@ -1,15 +1,40 @@
 SENAI.biblioteca = new Object();
 
+
 $(document)
 		.ready(
 				function() {
 					
 					
+					informations = function(id){
+						
 					
+						
+							var cfg = {
+									type : "GET",
+									url : "../../rest/bibliotecaRest/buscarServicosPorId/"+id,
+									
+									success : function(listaDeServicos) {
+										
+										alert(listaDeServicos.servico);
+										alert(listaDeServicos.horario);
+											
+											
+											document.getElementById("frame").value = listaDeServicos.horario;
+									},
+									error : function(err) {
+										alert("Erro ao consultar os Servicos: "
+												+ err.responseText);
+									}
+								};
+
+								SENAI.ajax.post(cfg);
+					
+					}
 
 		
 						 	function print() {
-						        var frame = document.getElementById('frame');
+						        var frame = document.getElementById('areaDeImpressao');
 						        frame.contentWindow.focus();
 						        frame.contentWindow.print();
 						    }

@@ -2,22 +2,23 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="T-Shirt"/>
 		<item key="casesensitive" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="wrap" value="true"/>
 		<item key="wholeword" value="false"/>
 		<list key="findhistory">
+			<item value="T-shirt"/>
+			<item value="#E6E6EC"/>
+			<item value="background-color"/>
 			<item value="total"/>
 			<item value="shoes"/>
 			<item value="sweat"/>
 			<item value="T-Shirt"/>
 			<item value="$"/>
-			<item value="my "/>
-			<item value="first name"/>
-			<item value="credit card"/>
 		</list>
 		<list key="replacehistory">
+			<item value="#FFFFFF"/>
 			<item value="i = 0"/>
 			<item value="ORDER BY servicos.data DESC;"/>
 			<item value="ASC"/>
@@ -25,7 +26,6 @@
 			<item value="DESC"/>
 			<item value="desc"/>
 			<item value=""/>
-			<item value="listaDeServicosData"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

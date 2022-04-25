@@ -26,6 +26,37 @@
 	margin-top:2%;
 }
 
+@media screen {
+  #printSection {
+      display: none;
+  }
+}
+
+@media print {
+  body * {
+    visibility:hidden;
+  }
+  #printSection, #printSection * {
+    visibility:visible;
+  }
+  #printSection {
+    position:absolute;
+    left:0;
+    top:0;
+  }
+ .btn {
+    display: none;
+  }
+  .close {
+    display: none;
+  }
+}
+
+.form-payment-total span {
+	font-size: 20px;
+}
+
+
 .ellipsis {
     max-width: 40px;
     text-overflow: ellipsis;

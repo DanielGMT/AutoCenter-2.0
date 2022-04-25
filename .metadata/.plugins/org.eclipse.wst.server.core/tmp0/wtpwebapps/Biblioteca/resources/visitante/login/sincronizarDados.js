@@ -3,7 +3,8 @@ SENAI.biblioteca = new Object();
 $(document)
 		.ready(
 				function() {	
-					SENAI.biblioteca.sincLogin = function(selectedValue) {
+					SENAI.biblioteca.sincLogin = function() {
+						
 						var html = "";
 						var novoLogin = new Object();
 						var login = document.getElementById("username").value;
@@ -14,61 +15,8 @@ $(document)
 						
 						
 						
-						if(selectedValue == 1){
-							var flag = 0;
+													  
 					
-										cfg = {
-												type : "POST",
-												url : "rest/bibliotecaRest/buscarClientesPorNome/"
-														+ null,
-												success : function(listaDeClientes) {
-													
-													for (var i = 0; i < listaDeClientes.length; i++) {
-														if(listaDeClientes[i].login == login){
-															if(listaDeClientes[i].senha == senhaCript){
-																flag = 1;
-																
-																cfh = {
-																		type : "POST",
-																		url : "rest/bibliotecaRest/logarCliente/"
-																				+ listaDeClientes[i].id,
-																		success : function(usuario) {
-																		
-																			if(window.location != "resources/cliente/index.jsp"){
-																				window.location = "resources/cliente/index.jsp";
-																			}
-																			
-							
-																		},
-																		error : function(err){
-																			alert("Erro ao sincronizar dados de login: "
-																					+ err.responseText);
-																		}
-																		
-																}
-																SENAI.ajax.post(cfh);
-															}
-														}
-													} 
-													if (flag == 0) {
-														html += "Login ou senha não estão corretos!";	
-														$("#msg").html(html);
-													}
-												},
-												error : function(err){
-													alert("Erro ao sincronizar dados de login: "
-															+ err.responseText);
-												}
-									  };
-				
-									 
-									
-									 SENAI.ajax.post(cfg);	
-
-		
-							 
-							  
-						}else if(selectedValue == 2){
 							  var flag = 0;
 							  cfg = {
 										type : "POST",
@@ -118,21 +66,43 @@ $(document)
 							 
 							
 							 SENAI.ajax.post(cfg);	
-						}else{
-							var html = "";
-							html += "É preciso escolher o tipo de conta!";
-							$("#msg").html(html);
-						}
+						
 							
 					};
 						
 					
-					SENAI.biblioteca.changeFunc = function() {	
-						
-					    var selectBox = document.getElementById("selectBox");
-					    selectedValue = selectBox.options[selectBox.selectedIndex].value;	   
-					    SENAI.biblioteca.sincLogin(selectedValue);
-					};
+					loadPage = function(caminho){
+	
+	
+				
+					$(".ui-dialog").remove();
+					
+					$("#registerContent").load("../../admin/"+caminho+"/content.jsp");
+					
+				
+					
+		
+					}	
+
+
+
+
+
+deslogar = function(){
+	var cfg = {
+			type : "POST",
+			url : "rest/bibliotecaRest/deslogar/",
+			success : function(sessao) {
+				window.location = "../../index.html";	
+			},
+		
+			error : function(err) {
+				alert("Erro ao deslogar: "
+						+ err.responseText);
+			}
+		};
+	SENAI.ajax.post(cfg);
+}
 					
 					SENAI.biblioteca.abrirModal = function() {
 						var cfg = {

@@ -47,7 +47,7 @@ $(document)
 						
 						novoServico.data = $("#inputdata").val();
 						
-
+					
 						
 						
 						document.getElementById("downButton").click();
@@ -60,7 +60,8 @@ $(document)
 						$("#inputplaca").val("");
 						$("#inputvalor").val(0);
 						$("#inputmetodo").val(1);
-						
+						$("#inputvalordesc").val(0);
+						document.getElementById("inputdata").value = str2;
 						var teste = document.getElementById("lugarzinho");
 						
 						while(linhas>0){
@@ -400,14 +401,15 @@ $(document)
 											}
 											tr.innerHTML += "<td>"+item.data+"</td>"
 											
-											+ "<td><a class = 'edit' onclick = 'SENAI.biblioteca.editarServico("
+										+ "<td><button class='tf-ion-eye' onclick = 'SENAI.biblioteca.editarServico("
 											+ item.id
 											+ "); '>"
-											+ "<i class='glyphicon glyphicon-eye-open'></i></a>"
-											+ "<a class = 'delete' onclick = 'SENAI.biblioteca.deletarServico("
+											+ "</button>"
+											+ " <button type='button' class='tf-printer' data-toggle='modal' onclick='SENAI.biblioteca.imprimirServico("+item.id+")' data-target='#MyModal'></button>"
+											+ "<button class='tf-ion-trash-a' onclick = 'SENAI.biblioteca.deletarServico("
 											+ item.id
 											+ ")'>"
-											+ "<i class='glyphicon glyphicon-trash'></i></a></td>";		
+											+ "</button></td>";	
 										
 										html.get('.fleinin').appendChild(tr);
 										
@@ -679,14 +681,15 @@ $(document)
 											}
 											tr.innerHTML += "<td>"+item.data+"</td>"
 											
-											+ "<td><a class = 'edit' onclick = 'SENAI.biblioteca.editarServico("
+											+ "<td><button class='tf-ion-eye' onclick = 'SENAI.biblioteca.editarServico("
 											+ item.id
 											+ "); '>"
-											+ "<i class='glyphicon glyphicon-eye-open'></i></a>"
-											+ "<a class = 'delete' onclick = 'SENAI.biblioteca.deletarServico("
+											+ "</button>"
+											+ " <button type='button' class='tf-printer' data-toggle='modal' onclick='SENAI.biblioteca.imprimirServico("+item.id+")' data-target='#MyModal'></button>"
+											+ "<button class='tf-ion-trash-a' onclick = 'SENAI.biblioteca.deletarServico("
 											+ item.id
 											+ ")'>"
-											+ "<i class='glyphicon glyphicon-trash'></i></a></td>";		
+											+ "</button></td>";	
 										
 										html.get('.fleinin').appendChild(tr);
 										
@@ -1008,14 +1011,15 @@ $(document)
 											}
 											tr.innerHTML += "<td>"+item.data+"</td>"
 											
-											+ "<td><a class = 'edit' onclick = 'SENAI.biblioteca.editarServico("
+											+ "<td><button class='tf-ion-eye' onclick = 'SENAI.biblioteca.editarServico("
 											+ item.id
 											+ "); '>"
-											+ "<i class='glyphicon glyphicon-eye-open'></i></a>"
-											+ "<a class = 'delete' onclick = 'SENAI.biblioteca.deletarServico("
+											+ "</button>"
+											+ " <button type='button' class='tf-printer' data-toggle='modal' onclick='SENAI.biblioteca.imprimirServico("+item.id+")' data-target='#MyModal'></button>"
+											+ "<button class='tf-ion-trash-a' onclick = 'SENAI.biblioteca.deletarServico("
 											+ item.id
 											+ ")'>"
-											+ "<i class='glyphicon glyphicon-trash'></i></a></td>";		
+											+ "</button></td>";	
 										
 										html.get('.fleinin').appendChild(tr);
 										
@@ -1149,6 +1153,8 @@ $(document)
 
 
 
+			
+
 			SENAI.biblioteca.exibirServicosDataAte = function(listaDeServicos,
 							valorBuscaDe, valorBuscaAte, metodo) {
 								
@@ -1279,14 +1285,15 @@ $(document)
 											}
 											tr.innerHTML += "<td>"+item.data+"</td>"
 											
-											+ "<td><a class = 'edit' onclick = 'SENAI.biblioteca.editarServico("
+											+ "<td><button class='tf-ion-eye' onclick = 'SENAI.biblioteca.editarServico("
 											+ item.id
 											+ "); '>"
-											+ "<i class='glyphicon glyphicon-eye-open'></i></a>"
-											+ "<a class = 'delete' onclick = 'SENAI.biblioteca.deletarServico("
+											+ "</button>"
+											+ " <button type='button' class='tf-printer' data-toggle='modal' onclick='SENAI.biblioteca.imprimirServico("+item.id+")' data-target='#MyModal'></button>"
+											+ "<button class='tf-ion-trash-a' onclick = 'SENAI.biblioteca.deletarServico("
 											+ item.id
 											+ ")'>"
-											+ "<i class='glyphicon glyphicon-trash'></i></a></td>";		
+											+ "</button></td>";		
 										
 										html.get('.fleinin').appendChild(tr);
 										
@@ -1457,7 +1464,8 @@ $(document)
 										get(element){
 											return document.querySelector(element)
 										}
-								}					
+								}				
+					
 
 						linhas += 1;
 							
@@ -1467,7 +1475,7 @@ $(document)
 						
 						var divtest = document.createElement("div")
 						
-						divtest.innerHTML = "Item"+(linhas+1)+"<div><select id='servico"+linhas+"' autocomplete='off'><option value='Outro'>Outro</option><option value='Amortecedor dianteiro'>Amortecedor dianteiro</option><option value='Amortecedor trazeiro'>Amortecedor trazeiro</option><option value='Balanceamento'>Balanceamento</option><option value='Bico'>Bico</option><option value='Batente'>Batente</option><option value='Balança'>Balança</option><option value='Barra axial'>Barra axial</option><option value='Bieleta'>Bieleta</option><option value='Bucha da balança'>Bucha da balança</option><option value='Bucha da barra estabilizadora'>Bucha da barra estabilizadora</option><option value='Coifa do amortecedor'>Coifa do amortecedor</option><option value='Coifa da homocinética'>Coifa da homocinética</option><option value='Camara de Moto'>Camara de Moto</option><option value='Camara de Carro'>Camara de Carro</option><option value='Coxim'>Coxim</option><option value='Coxim de câmbio'>Coxim de câmbio</option><option value='Conserto de roda'>Conserto de roda</option><option value='Cubo dianteiro'>Cubo dianteiro</option><option value='Cubo trazeiro'>Cubo trazeiro</option><option value='Cilindro de freio'>Cilindro de freio</option><option value='Desempeno de Roda'>Desempeno de Roda</option><option value='Disco de freio dianteiro'>Disco de freio dianteiro</option><option value='Disco de freio trazeiro'>Disco de freio trazeiro</option><option value='Friso de pneu'>Friso de pneu</option><option value='Homocinética'>Homocinética</option><option value='Manutenção'>Manutenção</option><option value='Moto'>Moto</option><option value='Mão de obra'>Mão de obra</option><option value='Mola'>Mola</option><option value='Morceguinho'>Morceguinho</option><option value='Pastilha de freio dianteiro'>Pastilha de freio dianteiro</option><option value='Pastilha de freio trazeiro'>Pastilha de freio trazeiro</option><option value='Pivô'>Pivô</option><option value='Refil'>Refil</option><option value='Remendo frio'>Remendo frio</option><option value='Remendo quente'>Remendo quente</option><option value='Remendo de Camara'>Remendo de Camara</option><option value='Rebaixamento'>Rebaixamento</option><option value='Rodízio'>Rodízio</option><option value='Rolamento dianteiro'>Rolamento dianteiro</option><option value='Rolamento trazeiro'>Rolamento trazeiro</option><option value='Socorro'>Socorro</option><option value='Troca'>Troca</option><option value='Troca de bico'>Troca de bico</option><option value='Troca de calota'>Troca de calota</option><option value='Terminal de direção'>Terminal de direção</option><option value='Venda de pneu 13'>Venda de pneu 13</option><option value='Venda de pneu 14'>Venda de pneu 14</option><option value='Venda de pneu 15'>Venda de pneu 15</option><option value='Venda de pneu 16'>Venda de pneu 16</option><option value='Venda de pneu 17'>Venda de pneu 17</option><option value='Venda de pneu 18'>Venda de pneu 18</option><option value='Venda de pneu 19'>Venda de pneu 19</option><option value='Venda de pneu 20'>Venda de pneu 20</option><option value='Venda de roda'>Venda de roda</option><option value='Venda de Acessório'>Venda de Acessório</option><option value='Vulcanizo'>Vulcanizo</option><option value='Vedação'>Vedação</option></select>"
+						divtest.innerHTML = "Item"+(linhas+1)+"<div><select id='servico"+linhas+"' autocomplete='off'><option value='Outro'>Outro</option><option value='Amortecedor dianteiro'>Amortecedor dianteiro</option><option value='Amortecedor trazeiro'>Amortecedor trazeiro</option><option value='Balanceamento'>Balanceamento</option><option value='Bico'>Bico</option><option value='Batente'>Batente</option><option value='Balança'>Balança</option><option value='Barra axial'>Barra axial</option><option value='Bieleta'>Bieleta</option><option value='Bucha da balança'>Bucha da balança</option><option value='Bucha da barra estabilizadora'>Bucha da barra estabilizadora</option><option value='Coifa do amortecedor'>Coifa do amortecedor</option><option value='Coifa da homocinética'>Coifa da homocinética</option><option value='Camara de Moto'>Camara de Moto</option><option value='Camara de Carro'>Camara de Carro</option><option value='Coxim'>Coxim</option><option value='Coxim de câmbio'>Coxim de câmbio</option><option value='Conserto de roda'>Conserto de roda</option><option value='Cubo dianteiro'>Cubo dianteiro</option><option value='Cubo trazeiro'>Cubo trazeiro</option><option value='Cilindro de freio'>Cilindro de freio</option><option value='Desempeno de Roda'>Desempeno de Roda</option><option value='Disco de freio dianteiro'>Disco de freio dianteiro</option><option value='Disco de freio trazeiro'>Disco de freio trazeiro</option><option value='Friso de pneu'>Friso de pneu</option><option value='Homocinética'>Homocinética</option><option value='Manutenção'>Manutenção</option><option value='Mão de obra'>Mão de obra</option><option value='Montagem'>Montagem</option><option value='Moto'>Moto</option><option value='Mola'>Mola</option><option value='Morceguinho'>Morceguinho</option><option value='Pastilha de freio dianteiro'>Pastilha de freio dianteiro</option><option value='Pastilha de freio trazeiro'>Pastilha de freio trazeiro</option><option value='Pneu 13'>Pneu 13</option><option value='Pneu 14'>Pneu 14</option><option value='Pneu 15'>Pneu 15</option><option value='Pneu 16'>Pneu 16</option><option value='Pneu 17'>Pneu 17</option><option value='Pneu 18'>Pneu 18</option><option value='Pneu 19'>Pneu 19</option><option value='Pneu 20'>Pneu 20</option><option value='Pneu 21'>Pneu 21</option><option value='Pivô'>Pivô</option><option value='Refil'>Refil</option><option value='Remendo frio'>Remendo frio</option><option value='Remendo quente'>Remendo quente</option><option value='Remendo de Camara'>Remendo de Camara</option><option value='Rebaixamento'>Rebaixamento</option><option value='Roda'>Roda</option><option value='Rodízio'>Rodízio</option><option value='Rolamento dianteiro'>Rolamento dianteiro</option><option value='Rolamento trazeiro'>Rolamento trazeiro</option><option value='Socorro'>Socorro</option><option value='Troca'>Troca</option><option value='Troca de bico'>Troca de bico</option><option value='Troca de calota'>Troca de calota</option><option value='Terminal de direção'>Terminal de direção</option><option value='Venda de pneu 13'>Venda de pneu 13</option><option value='Venda de pneu 14'>Venda de pneu 14</option><option value='Venda de pneu 15'>Venda de pneu 15</option><option value='Venda de pneu 16'>Venda de pneu 16</option><option value='Venda de pneu 17'>Venda de pneu 17</option><option value='Venda de pneu 18'>Venda de pneu 18</option><option value='Venda de pneu 19'>Venda de pneu 19</option><option value='Venda de pneu 20'>Venda de pneu 20</option><option value='Venda de pneu 21'>Venda de pneu 21</option><option value='Venda de roda'>Venda de roda</option><option value='Venda de Acessório'>Venda de Acessório</option><option value='Vulcanizo'>Vulcanizo</option><option value='Vedação'>Vedação</option></select>"
 				+ "<select onChange='SENAI.biblioteca.selectQnt(this)' name='quantidade' id='quantidade"+linhas+"' autocomplete='off'"
 				+ "minlength='3' maxlength='25' maxlength='25'><option value='1'>x1</option><option value='2'>x2</option><option value='3'>x3</option><option value='4'>x4</option><option value='5'>x5</option><option value='6'>x6</option><option value='7'>x7</option><option value='8'>x8</option><option value='9'>x9</option><option value='10'>x10</option></select><input class='form-control' id='item"+linhas+"' onblur= 'SENAI.biblioteca.blur(this)' autocomplete='off' placeholder='Valor Unitário'><label class='control-label'></label></div>";
 						
@@ -1728,6 +1736,7 @@ $(document)
 					}
 
 					SENAI.biblioteca.editarServico = function(id) {
+					
 						var cfg = {
 							type : "POST",
 							url : "../../rest/bibliotecaRest/buscarServicoPeloId/"
@@ -1759,8 +1768,8 @@ $(document)
 					SENAI.biblioteca.exibirEdicao = function(servico) {
 						var cfg = {
 							title : "Visualizar Serviço",
-							height : 620,
-							width : 750,
+							height : 830,
+							width : 850,
 							modal : true,
 							buttons : {
 								"OK" : function() {
@@ -1772,6 +1781,80 @@ $(document)
 						};
 						$("#editarServico").dialog(cfg);
 					};
+					
+					
+					///////////
+					
+					SENAI.biblioteca.imprimirServico = function(id) {
+							
+						
+											var cfg = {
+												type : "POST",
+												url : "../../rest/bibliotecaRest/buscarServicoPeloId/"
+														+ id,
+												success : function(servico) {
+													
+													
+													$("#test").html("<div id='datahr'><span>Data: "+servico.data+"</span><br><span>Hora: "+servico.horario+"</span><br><br><br><br></div><div id='itensxd'></div><div><span class='form-payment-price' data-wrapper-react='true'>"+servico.servico+"</span><br><br><br><br></div><span class='form-payment-total'> <b> <span id='total-text'> Total </span>   <span class='form-payment-price'> <span data-wrapper-react='true'> R$ <span id='payment_total'> "+servico.valor.toFixed(2)+" </span> </span> </span> </b> </span>");
+													
+												
+												},
+												error : function(err) {
+													alert("Erro ao editar o serviço!"
+															+ err.responseText);
+												}
+											};
+											SENAI.ajax.post(cfg);
+								
+								
+      							
+      						
+
+					};
+					
+					function print() {
+						        var frame = document.getElementById('frame');
+						        frame.contentWindow.focus();
+						        frame.contentWindow.print();
+						    }
+						    
+						    document.getElementById("btnPrint").onclick = function () {
+    printElement(document.getElementById("printThis"));
+}
+
+function printElement(elem) {
+    var domClone = elem.cloneNode(true);
+    
+    var $printSection = document.getElementById("printSection");
+    
+    if (!$printSection) {
+        var $printSection = document.createElement("div");
+        $printSection.id = "printSection";
+        document.body.appendChild($printSection);
+    }
+    
+    $printSection.innerHTML = "";
+    $printSection.appendChild(domClone);
+    window.print();
+}
+
+					SENAI.biblioteca.exibirImpressao = function(servico) {
+						var cfg = {
+							title : "Imprimir Serviço",
+							height : 900,
+							width : 900,
+							modal : true,
+							buttons : {
+								"OK" : function() {
+									$(this).dialog("close");
+								},
+							},
+							close : function() {
+							}
+						};
+						$("#MyModal").dialog(cfg);
+					};
+ 
 					
 					SENAI.biblioteca.buscarServHjTipo = function(metodo){
 						

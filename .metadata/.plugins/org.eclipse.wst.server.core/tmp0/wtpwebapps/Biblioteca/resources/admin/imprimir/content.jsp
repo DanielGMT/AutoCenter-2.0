@@ -66,7 +66,7 @@
 body, html {
 	margin: 0;
 	padding: 0;
-	background: #E6E6EC;
+	background: #FFFFFF;
 }
 
 .form-all {
@@ -151,7 +151,7 @@ body, html {
 }
 
 .supernova {
-	background-color: #e6e6ec;
+	background-color: #FFFFFF;
 	background-color: #ffffff;
 }
 
@@ -209,7 +209,7 @@ body, html {
 }
 /* | */
 .supernova .form-all, .form-all {
-	background-color: #e6e6ec;
+	background-color: #FFFFFF;
 	border: 1px solid transparent;
 }
 
@@ -435,7 +435,7 @@ li[data-type="control_image"] img {
 }
 
 .form-line-error {
-	background-color: #e6e6ec;
+	background-color: #FFFFFF;
 	-webkit-box-shadow: inset 0px 3px 11px -7px #ff3200;
 	-moz-box-shadow: inset 0px 3px 11px -7px #ff3200;
 	box-shadow: inset 0px 3px 11px -7px #ff3200;
@@ -738,7 +738,7 @@ li[data-type="control_image"] img {
 
 .supernova {
 	padding: 0;
-	background: #E6E6EC;
+	background: #FFFFFF;
 }
 
 .form-all * {
@@ -751,7 +751,7 @@ li[data-type="control_image"] img {
 
 .form-all {
 	width: 100%;
-	background: #E6E6EC;
+	background: #FFFFFF;
 	max-width: 800px;
 }
 
@@ -1025,7 +1025,7 @@ table.form-address-table {
 </style>
 </head>
 <body>
-<button onclick="print()" class="btn btn-success">Baixar PDF</button>
+<button onclick="print()" class="btn btn-success">Imprimir</button>
 	
 	<form id="frame" class="jotform-form"
 		action="https://submit.jotform.com/submit/221087662578667/"
@@ -1095,193 +1095,10 @@ table.form-address-table {
 											</ul>
 										</span>
 									</div>
-									<div data-wrapper-react="true">
-										<span class="form-product-item hover-product-item "
+									<div data-wrapper-react="true">							
+										<span id="itenslol" class="form-product-item hover-product-item "
 											categories="non-categorized" pid="1001">
-											<div data-wrapper-react="true"
-												class="form-product-item-detail">
-												<input type="checkbox"
-													class="form-checkbox  form-product-input"
-													id="input_20_1001" name="q20_myProducts[][id]" value="1001" />
-												<label for="input_20_1001" class="form-product-container">
-													<span data-wrapper-react="true"> <span
-														class="form-product-name" id="product-name-input_20_1001">
-															T-Shirt </span> <span class="form-product-details"> <b>
-																<span data-wrapper-react="true"> R$ <span
-																	id="input_20_1001_price"> 100.00 </span>
-															</span>
-														</b>
-													</span>
-												</span>
-												</label> <br /> <br /> <span class="form-sub-label-container"
-													style="vertical-align: top"> <label
-													class="form-sub-label" for="input_20_quantity_1001_0"
-													style="min-height: 13px" aria-hidden="false">
-														Quantity </label> <select class="form-dropdown"
-													name="q20_myProducts[special_1001][item_0]"
-													id="input_20_quantity_1001_0">
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-														<option value="5">5</option>
-														<option value="6">6</option>
-														<option value="7">7</option>
-														<option value="8">8</option>
-														<option value="9">9</option>
-														<option value="10">10</option>
-												</select>
-												</span> <span class="form-sub-label-container"
-													style="vertical-align: top"> <label
-													class="form-sub-label" for="input_20_custom_1001_1"
-													style="min-height: 13px" aria-hidden="false"> Color
-												</label> <select class="form-dropdown"
-													name="q20_myProducts[special_1001][item_1]"
-													id="input_20_custom_1001_1">
-														<option value="Red">Red</option>
-														<option value="Blue">Blue</option>
-														<option value="Green">Green</option>
-														<option value="Black">Black</option>
-														<option value="Magenta">Magenta</option>
-												</select>
-												</span> <span class="form-sub-label-container"
-													style="vertical-align: top"> <label
-													class="form-sub-label" for="input_20_custom_1001_2"
-													style="min-height: 13px" aria-hidden="false">
-														T-Shirt Size </label> <select class="form-dropdown"
-													name="q20_myProducts[special_1001][item_2]"
-													id="input_20_custom_1001_2">
-														<option value="XS">XS</option>
-														<option value="S">S</option>
-														<option value="M">M</option>
-														<option value="L">L</option>
-														<option value="XL">XL</option>
-														<option value="XXL">XXL</option>
-														<option value="XXXL">XXXL</option>
-												</select>
-												</span>
-											</div>
-										</span> <br /> <span class="form-product-item hover-product-item "
-											categories="non-categorized" pid="1002">
-											<div data-wrapper-react="true"
-												class="form-product-item-detail">
-												<input type="checkbox"
-													class="form-checkbox  form-product-input"
-													id="input_20_1002" name="q20_myProducts[][id]" value="1002" />
-												<label for="input_20_1002" class="form-product-container">
-													<span data-wrapper-react="true"> <span
-														class="form-product-name" id="product-name-input_20_1002">
-															Sweatshirt </span> <span class="form-product-details"> <b>
-																<span data-wrapper-react="true"> R$ <span
-																	id="input_20_1002_price"> 100.00 </span>
-															</span>
-														</b>
-													</span>
-												</span>
-												</label> <br /> <br /> <span class="form-sub-label-container"
-													style="vertical-align: top"> <label
-													class="form-sub-label" for="input_20_quantity_1002_0"
-													style="min-height: 13px" aria-hidden="false">
-														Quantity </label> <select class="form-dropdown"
-													name="q20_myProducts[special_1002][item_0]"
-													id="input_20_quantity_1002_0">
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-														<option value="5">5</option>
-														<option value="6">6</option>
-														<option value="7">7</option>
-														<option value="8">8</option>
-														<option value="9">9</option>
-														<option value="10">10</option>
-												</select>
-												</span> <span class="form-sub-label-container"
-													style="vertical-align: top"> <label
-													class="form-sub-label" for="input_20_custom_1002_1"
-													style="min-height: 13px" aria-hidden="false"> Color
-												</label> <select class="form-dropdown"
-													name="q20_myProducts[special_1002][item_1]"
-													id="input_20_custom_1002_1">
-														<option value="Red">Red</option>
-														<option value="Blue">Blue</option>
-														<option value="Green">Green</option>
-														<option value="Black">Black</option>
-														<option value="Magenta">Magenta</option>
-												</select>
-												</span> <span class="form-sub-label-container"
-													style="vertical-align: top"> <label
-													class="form-sub-label" for="input_20_custom_1002_2"
-													style="min-height: 13px" aria-hidden="false">
-														Sweatshirt Size </label> <select class="form-dropdown"
-													name="q20_myProducts[special_1002][item_2]"
-													id="input_20_custom_1002_2">
-														<option value="XS">XS</option>
-														<option value="S">S</option>
-														<option value="M">M</option>
-														<option value="L">L</option>
-														<option value="XL">XL</option>
-														<option value="XXL">XXL</option>
-														<option value="XXXL">XXXL</option>
-												</select>
-												</span>
-											</div>
-										</span> <br /> <span class="form-product-item hover-product-item "
-											categories="non-categorized" pid="1003">
-											<div data-wrapper-react="true"
-												class="form-product-item-detail">
-												<input type="checkbox"
-													class="form-checkbox  form-product-input"
-													id="input_20_1003" name="q20_myProducts[][id]" value="1003" />
-												<label for="input_20_1003" class="form-product-container">
-													<span data-wrapper-react="true"> <span
-														class="form-product-name" id="product-name-input_20_1003">
-															Shoes </span> <span class="form-product-details"> <b>
-																<span data-wrapper-react="true"> R$ <span
-																	id="input_20_1003_price"> 100.00 </span>
-															</span>
-														</b>
-													</span>
-												</span>
-												</label> <br /> <br /> <span class="form-sub-label-container"
-													style="vertical-align: top"> <label
-													class="form-sub-label" for="input_20_quantity_1003_0"
-													style="min-height: 13px" aria-hidden="false">
-														Quantity </label> <select class="form-dropdown"
-													name="q20_myProducts[special_1003][item_0]"
-													id="input_20_quantity_1003_0">
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-														<option value="5">5</option>
-														<option value="6">6</option>
-														<option value="7">7</option>
-														<option value="8">8</option>
-														<option value="9">9</option>
-														<option value="10">10</option>
-												</select>
-												</span> <span class="form-sub-label-container"
-													style="vertical-align: top"> <label
-													class="form-sub-label" for="input_20_custom_1003_1"
-													style="min-height: 13px" aria-hidden="false"> Shoe
-														Size </label> <select class="form-dropdown"
-													name="q20_myProducts[special_1003][item_1]"
-													id="input_20_custom_1003_1">
-														<option value="8">8</option>
-														<option value="8.5">8.5</option>
-														<option value="9">9</option>
-														<option value="9.5">9.5</option>
-														<option value="10">10</option>
-														<option value="10.5">10.5</option>
-														<option value="11">11</option>
-														<option value="11.5">11.5</option>
-														<option value="12">12</option>
-														<option value="13">13</option>
-														<option value="14">14</option>
-												</select>
-												</span>
-											</div>
+														</div>
 										</span> <br /> <span class="form-payment-total"> <b> <span
 												id="total-text"> Total </span>   <span
 												class="form-payment-price"> <span

@@ -1,7 +1,32 @@
 <script type="text/javascript" src="autor/js/autor.js"></script>
+<script type="text/javascript" src="imprimir/imprimir.js"></script>
 <script type="text/javascript"src="autor/js/jquery.maskMoney.js"></script>
 <script type="text/javascript"src="autor/js/jquery.mask.js"></script>
 
+ <div  class="hexagon-menu clear">
+                                    <div  class="hexagon-item">
+                                        <div class="hex-item">
+                                            
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="hex-item">
+                                            <div></div>
+                                            <div></div>
+                                        
+                                        </div>
+                                        <a href="#" onclick="loadPage('main')" class="hex-content">
+                                            <span class="hex-content-inner">
+                                                <span class="icon">
+                                                    <i class="tf-ion-ios-home"></i>
+                                                </span>
+                                                <span class="title">Início</span>
+                                            </span>
+                                            <svg viewbox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                        </a>
+                                    </div>
+                                    
+                                </div> <!-- /.hexagon-menu -->
 
 
 <div id="cadastrarAutor">
@@ -25,7 +50,7 @@
 			
 			 <div id="lugarzinho">
 			 <div>
-			 	Item1<div><select id='servico0'><option value='Outro'>Outro</option><option value='Amortecedor dianteiro'>Amortecedor dianteiro</option><option value='Amortecedor trazeiro'>Amortecedor trazeiro</option><option value='Balanceamento'>Balanceamento</option><option value='Bico'>Bico</option><option value='Batente'>Batente</option><option value='Balança'>Balança</option><option value='Barra axial'>Barra axial</option><option value='Bieleta'>Bieleta</option><option value='Bucha da balança'>Bucha da balança</option><option value='Bucha da barra estabilizadora'>Bucha da barra estabilizadora</option><option value='Coifa do amortecedor'>Coifa do amortecedor</option><option value='Coifa da homocinética'>Coifa da homocinética</option><option value='Camara de Moto'>Camara de Moto</option><option value='Camara de Carro'>Camara de Carro</option><option value='Coxim'>Coxim</option><option value='Coxim de câmbio'>Coxim de câmbio</option><option value='Conserto de roda'>Conserto de roda</option><option value='Cubo dianteiro'>Cubo dianteiro</option><option value='Cubo trazeiro'>Cubo trazeiro</option><option value='Cilindro de freio'>Cilindro de freio</option><option value='Desempeno de Roda'>Desempeno de Roda</option><option value='Disco de freio dianteiro'>Disco de freio dianteiro</option><option value='Disco de freio trazeiro'>Disco de freio trazeiro</option><option value='Friso de pneu'>Friso de pneu</option><option value='Homocinética'>Homocinética</option><option value='Manutenção'>Manutenção</option><option value='Moto'>Moto</option><option value='Mão de obra'>Mão de obra</option><option value='Mola'>Mola</option><option value='Morceguinho'>Morceguinho</option><option value='Pastilha de freio dianteiro'>Pastilha de freio dianteiro</option><option value='Pastilha de freio trazeiro'>Pastilha de freio trazeiro</option><option value='Pivô'>Pivô</option><option value='Refil'>Refil</option><option value='Remendo frio'>Remendo frio</option><option value='Remendo quente'>Remendo quente</option><option value='Remendo de Camara'>Remendo de Camara</option><option value='Rebaixamento'>Rebaixamento</option><option value='Rodízio'>Rodízio</option><option value='Rolamento dianteiro'>Rolamento dianteiro</option><option value='Rolamento trazeiro'>Rolamento trazeiro</option><option value='Socorro'>Socorro</option><option value='Troca'>Troca</option><option value='Troca de bico'>Troca de bico</option><option value='Troca de calota'>Troca de calota</option><option value='Terminal de direção'>Terminal de direção</option><option value='Venda de pneu 13'>Venda de pneu 13</option><option value='Venda de pneu 14'>Venda de pneu 14</option><option value='Venda de pneu 15'>Venda de pneu 15</option><option value='Venda de pneu 16'>Venda de pneu 16</option><option value='Venda de pneu 17'>Venda de pneu 17</option><option value='Venda de pneu 18'>Venda de pneu 18</option><option value='Venda de pneu 19'>Venda de pneu 19</option><option value='Venda de pneu 20'>Venda de pneu 20</option><option value='Venda de roda'>Venda de roda</option><option value='Venda de Acessório'>Venda de Acessório</option><option value='Vulcanizo'>Vulcanizo</option><option value='Vedação'>Vedação</option></select>
+			 	Item1<div><select id='servico0'><option value='Outro'>Outro</option><option value='Amortecedor dianteiro'>Amortecedor dianteiro</option><option value='Amortecedor trazeiro'>Amortecedor trazeiro</option><option value='Balanceamento'>Balanceamento</option><option value='Bico'>Bico</option><option value='Batente'>Batente</option><option value='Balança'>Balança</option><option value='Barra axial'>Barra axial</option><option value='Bieleta'>Bieleta</option><option value='Bucha da balança'>Bucha da balança</option><option value='Bucha da barra estabilizadora'>Bucha da barra estabilizadora</option><option value='Coifa do amortecedor'>Coifa do amortecedor</option><option value='Coifa da homocinética'>Coifa da homocinética</option><option value='Camara de Moto'>Camara de Moto</option><option value='Camara de Carro'>Camara de Carro</option><option value='Coxim'>Coxim</option><option value='Coxim de câmbio'>Coxim de câmbio</option><option value='Conserto de roda'>Conserto de roda</option><option value='Cubo dianteiro'>Cubo dianteiro</option><option value='Cubo trazeiro'>Cubo trazeiro</option><option value='Cilindro de freio'>Cilindro de freio</option><option value='Desempeno de Roda'>Desempeno de Roda</option><option value='Disco de freio dianteiro'>Disco de freio dianteiro</option><option value='Disco de freio trazeiro'>Disco de freio trazeiro</option><option value='Friso de pneu'>Friso de pneu</option><option value='Homocinética'>Homocinética</option><option value='Manutenção'>Manutenção</option><option value='Mão de obra'>Mão de obra</option><option value='Montagem'>Montagem</option><option value='Moto'>Moto</option><option value='Mola'>Mola</option><option value='Morceguinho'>Morceguinho</option><option value='Pastilha de freio dianteiro'>Pastilha de freio dianteiro</option><option value='Pastilha de freio trazeiro'>Pastilha de freio trazeiro</option><option value='Pneu 13'>Pneu 13</option><option value='Pneu 14'>Pneu 14</option><option value='Pneu 15'>Pneu 15</option><option value='Pneu 16'>Pneu 16</option><option value='Pneu 17'>Pneu 17</option><option value='Pneu 18'>Pneu 18</option><option value='Pneu 19'>Pneu 19</option><option value='Pneu 20'>Pneu 20</option><option value='Pneu 21'>Pneu 21</option><option value='Pivô'>Pivô</option><option value='Refil'>Refil</option><option value='Remendo frio'>Remendo frio</option><option value='Remendo quente'>Remendo quente</option><option value='Remendo de Camara'>Remendo de Camara</option><option value='Rebaixamento'>Rebaixamento</option><option value='Roda'>Roda</option><option value='Rodízio'>Rodízio</option><option value='Rolamento dianteiro'>Rolamento dianteiro</option><option value='Rolamento trazeiro'>Rolamento trazeiro</option><option value='Socorro'>Socorro</option><option value='Troca'>Troca</option><option value='Troca de bico'>Troca de bico</option><option value='Troca de calota'>Troca de calota</option><option value='Terminal de direção'>Terminal de direção</option><option value='Venda de pneu 13'>Venda de pneu 13</option><option value='Venda de pneu 14'>Venda de pneu 14</option><option value='Venda de pneu 15'>Venda de pneu 15</option><option value='Venda de pneu 16'>Venda de pneu 16</option><option value='Venda de pneu 17'>Venda de pneu 17</option><option value='Venda de pneu 18'>Venda de pneu 18</option><option value='Venda de pneu 19'>Venda de pneu 19</option><option value='Venda de pneu 20'>Venda de pneu 20</option><option value='Venda de roda'>Venda de roda</option><option value='Venda de Acessório'>Venda de Acessório</option><option value='Vulcanizo'>Vulcanizo</option><option value='Vedação'>Vedação</option></select>
 				<select onChange='SENAI.biblioteca.selectQnt(this)' name='quantidade' id='quantidade0'><option value='1'>x1</option><option value='2'>x2</option><option value='3'>x3</option><option value='4'>x4</option><option value='5'>x5</option><option value='6'>x6</option><option value='7'>x7</option><option value='8'>x8</option><option value='9'>x9</option><option value='10'>x10</option></select><input class='form-control' id='item0' onblur= 'SENAI.biblioteca.blur(this)' autocomplete='off' placeholder='Valor Unitário'><label class='control-label'></label></div>
 						
 			 </div>
@@ -128,11 +153,10 @@
 	
 	
 		
-		<div id="entrar" style="margin-left: 44%;">
+		<div id="entrar" style="margin-left: 40%;">
 		
 			<button type="button" id="add-new"
-				onclick="SENAI.biblioteca.cadastrarServico()" class="btn btn-primary">Registrar</button><button type="button" id="telaimprime"
-				onclick="loadPage('imprimir')" class="btn btn-primary">Imprimir</button>
+				onclick="SENAI.biblioteca.cadastrarServico()" class="btn btn-primary">Registrar</button>
 		</div>
 	</div>	
 	</form>
@@ -179,7 +203,7 @@
 </div>
 <div id="editarServico" style="display: none">
 	<label>Serviço:</label> <textarea disabled id="servicoEdit" class="form-control" name="servico" type="text"></textarea>
-	<input name="idServico" id="idAutorEdit" type="hidden">
+	<input name="idServico" id="idServicoEdit" type="hidden">
 	<label>Observação:</label>
 	<textarea disabled class="form-control" id="observacaoEdit" cols="20" autocomplete="off"></textarea>
 	<input name="idObservacao" id="idOservacaoEdit" type="hidden">
@@ -250,5 +274,47 @@
 			</select>
 	<input name="idMetodo" id="idMetodoEdit" type="hidden">
 </div>
+
+<!---------------------->
+<div class="wrap">
+  
+ 
+</div>
+ <div id="printThis">
+<div id="MyModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+ 
+  <div class="modal-dialog modal-lg">
+    
+    <!-- Modal Content: begins -->
+    <div class="modal-content">
+      
+      <!-- Modal Header -->
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="gridSystemModalLabel">Magalhães Auto Center</h4>
+      </div>
+    
+      <!-- Modal Body -->  
+     
+      <div class="modal-body">
+        <div id="test" class="body-message">
+           
+        </div>
+      </div>
+    
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+      <button id="btnPrint" type="button" style="width: 8% !important"class="btn btn-default tf-printer"></button>
+       <button class="btn " data-dismiss="modal" aria-hidden="true">Fechar</button>
+      
+      </div>
+    
+    </div>
+    <!-- Modal Content: ends -->
+    
+  </div>
+    </div>
+</div>
+
 
 <div id="msg" style="display: none"></div>

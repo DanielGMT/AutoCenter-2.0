@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Página inicial</title>
+
+<link rel="stylesheet" href="resources/visitante/navbar/css/navbar.css">
+
+
+<link rel="stylesheet" href="resources/css/jquery-ui.css">
+<script type="text/javascript" src="resources/js/jquery-3.3.1.js"></script>
+<link rel="stylesheet" href="resources/visitante/index.css">
+<link rel="stylesheet" href="resources/visitante/login/css/login.css">
+<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i|Open+Sans:400,600,700,800" rel="stylesheet">
+        <link rel="stylesheet" href="phantom/light/css/themefisher-fonts.min.css">
+        <link rel="stylesheet" href="phantom/light/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="phantom/light/css/bootstrap.min.css">
+        <link rel="stylesheet" href="phantom/light/css/main.css">
+        <link rel="stylesheet" href="phantom/light/css/dark.css">
+        <link id="color-changer" rel="stylesheet" href="phantom/light/css/colors/red.css">
+<script type="text/javascript" src="resources/js/jquery-ui.js"></script>
+
+<script type="text/javascript" src="resources/visitante/index.js"></script>
+<script type="text/javascript" src="resources/js/ajax.js"></script>
+<script src="js/vendor/jquery-2.2.4.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <!-- <script src="js/jquery.easing.min.js"></script> -->
+        <script src="phantom/light/js/isotope.pkgd.min.js"></script>
+        <script src="phantom/light/js/jquery.nicescroll.min.js"></script>
+        <script src="phantom/light/js/owl.carousel.min.js"></script>
+        <script src="phantom/light/js/jquery-validation.min.js"></script>
+        <script src="phantom/light/js/form.min.js"></script>
+        <script src="phantom/light/js/main.js"></script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+	<div id="adminPage"></div>
+	<div id="clientPage"></div>
+	<div id = "navbar">
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header"></div>
+				<ul class="nav navbar-nav">
+					<li><a class="glyphicon glyphicon-home navbar-brand" href="#" onclick="loadLogin()"></a></li>
+				</ul>
+				<ul id="perfil" class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false"> <span class="glyphicon glyphicon-user"></span>
+							<span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="#" onclick="loadLogin()">Login</a></li>
+						</ul>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<div class="container" id="conteudo">
+		<div id="loginPage"></div>
+		
+	</div>
+</body>
+</html>

@@ -89,6 +89,26 @@ public class BibliotecaRest extends UtilRest {
 			return this.buildErrorResponse(e.getMessage());
 		}
 	}
+	
+	@GET
+	@Path("/buscarServicosPorId/{id}")
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	public Response buscarServicosPorId(@PathParam("id") int id) {
+		try {
+			Servico servicos = new Servico();
+
+			Conexao conec = new Conexao();
+			Connection conexao = conec.abrirConexao();
+			JDBCBibliotecaDAO jdbcBiblioteca = new JDBCBibliotecaDAO(conexao);
+			servicos = jdbcBiblioteca.buscarPorId(id);
+			conec.fecharConexao();
+
+			return this.buildResponse(servicos);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return this.buildErrorResponse(e.getMessage());
+		}
+	}
 
 	@POST
 	@Path("/buscarServicosPorData/{valorBusca}/{valorBusca2}")

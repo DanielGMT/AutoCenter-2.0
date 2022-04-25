@@ -17,6 +17,8 @@ public class Servico implements Serializable {
 	private int metodo;
 	private String data;
 	private float total;
+
+	private String horario;
 	
 	public int getId(){
 		return id;
@@ -106,5 +108,15 @@ public class Servico implements Serializable {
 	
 	public void setTotal(float total){
 		this.total = total;
+	}
+
+	public void setHorario(String horario) {
+		this.horario = horario;
+		
+	}
+	
+	public String getHorario() {
+		return horario;
+		
 	}
 }
