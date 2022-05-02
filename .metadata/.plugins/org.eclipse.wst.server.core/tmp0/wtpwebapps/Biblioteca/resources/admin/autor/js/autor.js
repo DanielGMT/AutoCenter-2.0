@@ -393,9 +393,9 @@ $(document)
 											if(item.metodo == 1){
 												tr.innerHTML += "<td>Dinheiro</td>";
 											}else if(item.metodo == 2){
-												tr.innerHTML += "<td>Cartão Débito</td>";
+												tr.innerHTML += "<td>Débito</td>";
 											}else if(item.metodo == 3){
-												tr.innerHTML += "<td>Cartão Crébito</td>";
+												tr.innerHTML += "<td>Crédito</td>";
 											}else{
 												tr.innerHTML += "<td>Pix</td>";
 											}
@@ -673,9 +673,9 @@ $(document)
 											if(item.metodo == 1){
 												tr.innerHTML += "<td>Dinheiro</td>";
 											}else if(item.metodo == 2){
-												tr.innerHTML += "<td>Cartão Débito</td>";
+												tr.innerHTML += "<td>Débito</td>";
 											}else if(item.metodo == 3){
-												tr.innerHTML += "<td>Cartão Crébito</td>";
+												tr.innerHTML += "<td>Crédito</td>";
 											}else{
 												tr.innerHTML += "<td>Pix</td>";
 											}
@@ -1003,9 +1003,9 @@ $(document)
 											if(item.metodo == 1){
 												tr.innerHTML += "<td>Dinheiro</td>";
 											}else if(item.metodo == 2){
-												tr.innerHTML += "<td>Cartão Débito</td>";
+												tr.innerHTML += "<td>Débito</td>";
 											}else if(item.metodo == 3){
-												tr.innerHTML += "<td>Cartão Crébito</td>";
+												tr.innerHTML += "<td>Crédito</td>";
 											}else{
 												tr.innerHTML += "<td>Pix</td>";
 											}
@@ -1277,9 +1277,9 @@ $(document)
 											if(item.metodo == 1){
 												tr.innerHTML += "<td>Dinheiro</td>";
 											}else if(item.metodo == 2){
-												tr.innerHTML += "<td>Cartão Débito</td>";
+												tr.innerHTML += "<td>Débito</td>";
 											}else if(item.metodo == 3){
-												tr.innerHTML += "<td>Cartão Crébito</td>";
+												tr.innerHTML += "<td>Crédito</td>";
 											}else{
 												tr.innerHTML += "<td>Pix</td>";
 											}

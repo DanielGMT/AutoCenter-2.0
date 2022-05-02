@@ -22,6 +22,24 @@
 #cadastrarAutor{
 	margin-top:2%;
 }
+
+
+	#mais:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+
+}
+
+#menos:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+
+}
+	
+
+
+p{
+	margin-top: -2% !important;
+}
+
 #cadastrarCliente{
 	margin-top:2%;
 }
@@ -94,11 +112,23 @@ div.container{
 	display: block !important;
 	margin-left: auto;
 	margin-right: auto;
+	background-color: rgb(30, 37, 48);
+	
 }
 #add-new{
 	margin-top: 3%;
 	margin-left: auto;
 	margin-right: auto;
+	background-color: rgb(30, 37, 48);
+}
+
+#add-new:hover{
+	background-color: green;
+	box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+#downButton:hover{
+	box-shadow: 0 0 28px rgba(33,33,33,.2);
 }
 
 .btn-primary{

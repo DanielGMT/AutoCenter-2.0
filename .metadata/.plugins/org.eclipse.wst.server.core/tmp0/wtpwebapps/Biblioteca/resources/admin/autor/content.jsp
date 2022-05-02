@@ -55,16 +55,22 @@
 						
 			 </div>
 			 </div>
-			 	<a class = "edit" onclick = "SENAI.biblioteca.acrescentarServico()">
+			 	<a  class = "edit" onclick = "SENAI.biblioteca.acrescentarServico()">
 			
-				<i class="glyphicon glyphicon-plus" style="color: blue;"></i></a>
-			 	<a class = "edit" onclick = "SENAI.biblioteca.tirarServico()">
-			 	
-				<i class="glyphicon glyphicon-minus" style="color: red;"></i></a>
+				<i id="mais" class="tf-ion-plus" style="color: blue;"></i></a>
+			 	<a  class = "edit" onclick = "SENAI.biblioteca.tirarServico()">
+			 	&nbsp;
+				<i id="menos" class="tf-ion-minus" style="color: red;"></i></a>
+				
+				
+
+
+
+
 				<BR><BR>
 				<div style="width: 50%; float: left;">
 					<label for="valor">Valor Total</label><input disabled
-					class="form-control" style="background-color: #b1dd9e;" onblur="SENAI.biblioteca.teste(this)" value ="R$" autocomplete="off" type="text" id="inputvalor">
+					class="form-control" onblur="SENAI.biblioteca.teste(this)" value ="R$" autocomplete="off" type="text" id="inputvalor">
 				</div>
 				<div style="width: 50%; float: right;">
 					<label for="data">Data de serviço</label> <input
@@ -77,7 +83,7 @@
 				
 				<div style="width: 50%; float: left;">
 					<label class = "control-label" for="observacao">Observação</label>
-					<textarea class='form-control' id='inputobservacao' cols='20' autocomplete='off' placeholder='Não obrigatório'></textarea>
+					<textarea class='form-control' id='inputobservacao' cols='20' autocomplete='off'></textarea>
 				</div>
 				
 				<div style="width: 50%; float: left;">
@@ -130,7 +136,7 @@
 				<option value="Volkswagen">Volkswagen</option>
 				<option value="Volvo">Volvo</option>
 			</select></div><div style="width: 50%; float: right;">
-			<label for="modelo">Modelo</label> <input class="form-control" autocomplete="on" placeholder="Não obrigatório" id="inputmodelo">	
+			<label for="modelo">Modelo</label> <input class="form-control" autocomplete="on" id="inputmodelo">	
 			
 			
 				
@@ -139,14 +145,14 @@
 	
 	<div style="width: 50%; float: left;">
 		<label for="placa">Placa</label> <input
-		name="placas" class="form-control" placeholder="Não obrigatório" autocomplete="off" type="text" id="inputplaca">
+		name="placas" class="form-control" autocomplete="off" type="text" id="inputplaca">
 	</div>		
 	<div style="width: 50%; float: right;">
 	<label for="metodo">Método de pagamento *</label>
 				<select class="form-control" name="metodo" id="inputmetodo">
 					<option value=1>Dinheiro</option>
-					<option value=2>Cartão Débito</option>
-					<option value=3>Cartão Crédito</option>
+					<option value=2>Débito</option>
+					<option value=3>Crédito</option>
 					<option value=4>PIX</option>
 				</select>	
 	</div>
@@ -268,8 +274,8 @@
 	<label>Método de pagamento:</label>
 		<select disabled class="form-control" name="metodo" id="metodoEdit" class="form-control" name="metodo">
 				<option value=1>Dinheiro</option>
-				<option value=2>Cartão Débito</option>
-				<option value=3>Cartão Crédito</option>
+				<option value=2>Débito</option>
+				<option value=3>Crédito</option>
 				<option value=4>PIX</option>
 			</select>
 	<input name="idMetodo" id="idMetodoEdit" type="hidden">
