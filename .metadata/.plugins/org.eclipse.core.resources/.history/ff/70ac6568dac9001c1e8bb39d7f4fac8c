@@ -145,7 +145,7 @@
 	
 	<div style="width: 50%; float: left;">
 		<label for="placa">Placa</label> <input
-		name="placas" class="form-control" autocomplete="off" type="text" id="inputplaca" placeholder="AAA-0000 / AAA0A00">
+		name="placas" class="form-control" autocomplete="off" type="text" id="inputplaca">
 	</div>		
 	<div style="width: 50%; float: right;">
 	<label for="metodo">Método de pagamento *</label>
