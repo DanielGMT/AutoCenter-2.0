@@ -45,11 +45,13 @@ public class JDBCBibliotecaDAO {
         System.out.println("LocalDateTime antes de formatar: " + agora);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+    
 
         String agoraFormatado = agora.format(formatter);
+      
 
         System.out.println("LocalDateTime depois de formatar: " + agoraFormatado);
-
+      
 		
 		PreparedStatement p;
 		try {

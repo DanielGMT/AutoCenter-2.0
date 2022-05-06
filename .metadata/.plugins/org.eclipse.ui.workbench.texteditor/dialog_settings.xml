@@ -2,22 +2,23 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="Valor Unitário"/>
 		<item key="casesensitive" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="wrap" value="true"/>
 		<item key="wholeword" value="false"/>
 		<list key="findhistory">
-			<item value="fechar"/>
-			<item value="entrar"/>
-			<item value="magalh"/>
-			<item value="contact"/>
-			<item value="about"/>
-			<item value="gráfico"/>
-			<item value="tf"/>
-			<item value="phantom.png"/>
+			<item value="placa"/>
+			<item value="valor un"/>
+			<item value="#b1dd9e"/>
+			<item value="Não Obrigatório"/>
+			<item value="Cartão crébito"/>
+			<item value="Cartão Débito"/>
+			<item value="plus"/>
+			<item value="-5%"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Débito"/>
 			<item value="SENAI.biblioteca.imprimirServico"/>
 			<item value="imprimirServico"/>
 			<item value="areaDeImpressao"/>
@@ -25,7 +26,6 @@
 			<item value="informations"/>
 			<item value="#FFFFFF"/>
 			<item value="i = 0"/>
-			<item value="ORDER BY servicos.data DESC;"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

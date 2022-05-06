@@ -7,6 +7,23 @@ $(document)
 					
 					SENAI.biblioteca.cadastrarServico = function() {
 						
+										var str2 = new Date();
+  					var str1 = new Date();
+  					
+							var dd2 = String(str2.getDate()).padStart(2, '0');
+							var dd1 = String(str1.getDate()).padStart(2, '0');
+							var mm2 = String(str2.getMonth() + 1).padStart(2, '0'); //January is 0!
+								var mm1 = String(str1.getMonth() + 1).padStart(2, '0'); //January is 0!
+							var yyyy2 = str2.getFullYear();
+							var yyyy1 = str1.getFullYear();
+							
+							str2 = dd2 + "/" + mm2 + "/" + yyyy2;
+							str1 =  yyyy1+ "-" + mm1 + "-" + dd1;		
+  						
+  					
+						
+				
+						
 						var novoServico = new Object();
 						for(i = 0; i < (linhas+1); i++){
 							var conc = [];
@@ -61,7 +78,9 @@ $(document)
 						$("#inputvalor").val(0);
 						$("#inputmetodo").val(1);
 						$("#inputvalordesc").val(0);
-						document.getElementById("inputdata").value = str2;
+						
+					$("#inputdata").val(str1);
+						
 						var teste = document.getElementById("lugarzinho");
 						
 						while(linhas>0){
@@ -236,7 +255,21 @@ $(document)
 						
 						$("#item0").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
   					
-  						document.getElementById("inputdata").value = str2;
+  					
+  					var str2 = new Date();
+  					var str1 = new Date();
+  					
+							var dd2 = String(str2.getDate()).padStart(2, '0');
+							var dd1 = String(str1.getDate()).padStart(2, '0');
+							var mm2 = String(str2.getMonth() + 1).padStart(2, '0'); //January is 0!
+								var mm1 = String(str1.getMonth() + 1).padStart(2, '0'); //January is 0!
+							var yyyy2 = str2.getFullYear();
+							var yyyy1 = str1.getFullYear();
+							
+							str2 = dd2 + "/" + mm2 + "/" + yyyy2;
+							str1 =  yyyy1+ "-" + mm1 + "-" + dd1;		
+  						
+  						document.getElementById("inputdata").value =  str1;
   						
   					
   					});	
@@ -826,6 +859,22 @@ $(document)
 					
 					SENAI.biblioteca.descerPag = function(){
 						window.scrollTo(5, 5);
+						
+							var str2 = new Date();
+  					var str1 = new Date();
+  					
+							var dd2 = String(str2.getDate()).padStart(2, '0');
+							var dd1 = String(str1.getDate()).padStart(2, '0');
+							var mm2 = String(str2.getMonth() + 1).padStart(2, '0'); //January is 0!
+								var mm1 = String(str1.getMonth() + 1).padStart(2, '0'); //January is 0!
+							var yyyy2 = str2.getFullYear();
+							var yyyy1 = str1.getFullYear();
+							
+							str2 = dd2 + "/" + mm2 + "/" + yyyy2;
+							str1 =  yyyy1+ "-" + mm1 + "-" + dd1;		
+  						
+  						document.getElementById("inputdata").value =  str1;
+						
 					}
 					
 					SENAI.biblioteca.tirarServico = function(){

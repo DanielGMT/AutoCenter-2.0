@@ -1,22 +1,8 @@
 INDEX VERSION 1.4+C:\Users\Danie\Documents\GitHub\AutoCenter-2.0\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2560294011.index
 2585532972.index
-1204385438.index
-590106802.index
-3116424596.index
-2781169235.index
-3083855148.index
-929510033.index
-2990414899.index
 212329408.index
+3116424596.index
+3083855148.index
+2990414899.index
 819052535.index
-1989374036.index
-624982763.index
-136331148.index
-1155187017.index
-768575282.index
-1028471558.index
-89749548.index
-3546439943.index
-2033397905.index
-2242867781.index
+1204385438.index
