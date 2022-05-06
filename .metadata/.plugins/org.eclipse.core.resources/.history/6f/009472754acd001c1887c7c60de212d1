@@ -141,13 +141,14 @@ $(document)
 					};
 
 					
-						
-					  window.setInterval(function () {
-							var str1 = new Date();
-  							
+					const myTimeout = setTimeout(myGreeting, 5000);
+
+					function myGreeting() {
+								
+  								var str1 = new Date();
+  					
 							
 							var dd1 = String(str1.getDate()).padStart(2, '0');
-					
 						
 								var mm1 = String(str1.getMonth() + 1).padStart(2, '0'); //January is 0!
 							
@@ -155,23 +156,11 @@ $(document)
 							
 						
 							str1 =  yyyy1+ "-" + mm1 + "-" + dd1;	
-							
-							
-					  
-				        var d = new Date();
-				        if (d.getHours() == 00) {
-				          document.getElementById("inputdata").value = str1; 
-				        }
-				         if (d.getHours() == 06) {
-				         document.getElementById("inputdata").value = "1999-12-12"; 
-				        }
-				
-				    }, 5000);
+					  document.getElementById("inputdata").value = "2022-04-04"; 
+					  clearTimeout(myTimeout);
+					  setTimeout(myGreeting, 5000);
+					}
 
-					
-					
-
-							
 					
 					SENAI.biblioteca.buscarServico = function() {
 						var valorBusca = $("#searchBar").val();

@@ -157,13 +157,13 @@ $(document)
 							str1 =  yyyy1+ "-" + mm1 + "-" + dd1;	
 							
 							
-					  
+					  document.getElementById("inputdata").value = str1; 
 				        var d = new Date();
 				        if (d.getHours() == 00) {
-				          document.getElementById("inputdata").value = str1; 
+				          $("#divid").show();
 				        }
-				         if (d.getHours() == 06) {
-				         document.getElementById("inputdata").value = "1999-12-12"; 
+				         if (d.getHours() == 6) {
+				          $("#divid").hide();
 				        }
 				
 				    }, 5000);
