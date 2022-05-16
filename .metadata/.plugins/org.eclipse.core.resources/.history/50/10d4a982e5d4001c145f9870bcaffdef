@@ -163,7 +163,7 @@ $(document)
 				          document.getElementById("inputdata").value = str1; 
 				        }
 				         if (d.getHours() == 06) {
-				         document.getElementById("inputdata").value = str1; 
+				         document.getElementById("inputdata").value = "1999-12-12"; 
 				        }
 				
 				    }, 5000);
