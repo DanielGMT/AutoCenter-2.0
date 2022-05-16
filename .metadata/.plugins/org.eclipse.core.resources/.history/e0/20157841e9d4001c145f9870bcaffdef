@@ -165,9 +165,6 @@ $(document)
 				         if (d.getHours() == 06) {
 				         document.getElementById("inputdata").value = str1; 
 				        }
-				         if (d.getHours() == 05) {
-				         document.getElementById("inputdata").value = str1; 
-				        }
 				
 				    }, 5000);
 
